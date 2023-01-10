@@ -1,32 +1,24 @@
 <?php
 
-/**
- * Fichier de lancement du MVC, Il appel le var.init et le gabarit HTML 
- * @author Jonathan Martel
- * @version 1.0
- * @update 2019-01-21
- * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
- * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
- * 
- */
+require_once('./dataconf.model.php');
+require __DIR__ . '/config/config.php';
+require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/Controller/Controller.php';
+
+// Create Router instance
+$router = new \Bramus\Router\Router();
 
 
- 
-	 /***************************************************/
-    /** Fichier de configuration, contient les define et l'autoloader **/
-    /***************************************************/
-    require_once('./dataconf.php');
-	require_once("./config.php");
-	
-   /***************************************************/
-    /** Initialisation des variables **/
-    /***************************************************/
-	require_once("./var.init.php");
-   
-   /***************************************************/
-    /** Démarrage du controleur **/
-    /***************************************************/
-	$oCtl = new Controler();
-	$oCtl->gerer();
+$router->get('/', 'Controller@accueil');
+$router->get('/accueil', 'Controller@accueil');
+$router->get('/nouvelleBouteilleCellier', 'Controller@nouvelleBouteilleCellier');
+
+
+
+
+// Run it!
+$router->run();
+
+
 
 ?>
