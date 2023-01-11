@@ -1,4 +1,5 @@
 <?php
+
 require_once('./dataconf.model.php');
 require __DIR__ . '/config/config.php';
 require __DIR__ . '/vendor/autoload.php';
@@ -13,6 +14,8 @@ $router->get('/accueil', 'Bouteille@accueil');
 $router->get('/nouvelleBouteilleCellier', 'Bouteille@nouvelleBouteilleCellier');
 
 $router->post('/ajouterBouteilleCellier', 'Bouteille@ajouterBouteilleCellier');
+$router->get('/modifierBouteille/{id}', 'Bouteille@modifierBouteille');
+
 
 
 
