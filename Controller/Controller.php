@@ -27,10 +27,10 @@ class Controller
     }
     public function ajouterBouteilleCellier()
     {
-        include("vues/entete.php");
-        include("vues/ajouter.php");
-        include("vues/pied.php");
-        print_r($_POST);
+   
+        $bte = new Bouteille();
+        $cellier = $bte->ajouterBouteilleCellier($_POST);
+        header("Location: /accueil");
     }
     
 }
