@@ -43,9 +43,8 @@ class Bouteille extends Modele {
 					b.description					
 					from vino__cellier c 
 					INNER JOIN vino__bouteille b ON c.id_bouteille = b.id
-					INNER JOIN vino__type t ON t.id = b.type
-					'; 
-	
+					INNER JOIN vino__type t ON t.id = b.type'; 
+
 		return $this->database->fetchAll($requete);
 	}
 	
@@ -69,28 +68,7 @@ class Bouteille extends Modele {
 		 
 		//echo $nom;
 		$requete ='SELECT id, nom FROM vino__bouteille where LOWER(nom) like LOWER("%'. $nom .'%") LIMIT 0,'. $nb_resultat; 
-		//var_dump($requete);
-		if(($res = $this->_db->query($requete)) ==	 true)
-		{
-			if($res->num_rows)
-			{
-				while($row = $res->fetch_assoc())
-				{
-					$row['nom'] = trim(utf8_encode($row['nom']));
-					$rows[] = $row;
-					
-				}
-			}
-		}
-		else 
-		{
-			throw new Exception("Erreur de requête sur la base de données", 1);
-			 
-		}
-		
-		
-		//var_dump($rows);
-		return $rows;
+		return $this->database->fetchAll($requete);
 	}
 	
 	
@@ -103,21 +81,17 @@ class Bouteille extends Modele {
 	 */
 	public function ajouterBouteilleCellier($data)
 	{
-		//TODO : Valider les données.
-		var_dump($data);	
-		
-		$requete = "INSERT INTO vino__cellier(id_bouteille,date_achat,garde_jusqua,notes,prix,quantite,millesime) VALUES (".
-		"'".$data['id_bouteille']."',".
-		"'".$data['date_achat']."',".
-		"'".$data['garde_jusqua']."',".
-		"'".$data['notes']."',".
-		"'".$data['prix']."',".
-		"'".$data['quantite']."',".
-		"'".$data['millesime']."')";
-
-        $res = $this->_db->query($requete);
+		$database->query('INSERT INTO vino__cellier ? ', [ 
+			'id_bouteille' => $data['id_bouteille'],
+			'date_achat' => $data['date_achat'],
+			'garde_jusqua' => $data['garde_jusqua'],
+			'notes' => $data['notes'],
+			'prix' => $data['prix'],
+			'quantite' => $data['quantite'],
+			'millesime' => $data['millesime'],
+		]);
         
-		return $res;
+		return $this->database->getInsertId();
 	}
 	
 	
