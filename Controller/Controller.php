@@ -25,5 +25,12 @@ class Controller
         include("vues/ajouter.php");
         include("vues/pied.php");
     }
+    public function ajouterBouteilleCellier()
+    {
+   
+        $bte = new Bouteille();
+        $cellier = $bte->ajouterBouteilleCellier($_POST);
+        header("Location: /accueil");
+    }
     
 }
