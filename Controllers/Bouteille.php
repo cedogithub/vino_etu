@@ -1,9 +1,10 @@
 <?php
-class Controller
+
+class Bouteille
 {
     public function accueil()
     {
-        $bte = new Bouteille();
+        $bte = new BouteilleModel();
         $data = $bte->getListeBouteilleCellier();
         include("vues/entete.php");
         include("vues/cellier.php");
@@ -13,7 +14,7 @@ class Controller
 
     public function listeBouteille()
     {
-        $bte = new Bouteille();
+        $bte = new BouteilleModel();
         $cellier = $bte->getListeBouteilleCellier();
 
         echo json_encode($cellier);         
@@ -28,7 +29,7 @@ class Controller
     public function ajouterBouteilleCellier()
     {
    
-        $bte = new Bouteille();
+        $bte = new BouteilleModel();
         $cellier = $bte->ajouterBouteilleCellier($_POST);
         header("Location: /accueil");
     }
