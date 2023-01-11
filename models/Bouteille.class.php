@@ -15,17 +15,8 @@ class Bouteille extends Modele {
     
 	public function getListeBouteille()
 	{
-		
 		$rows = Array();
-		$res = $this->_db->query('Select * from '. self::TABLE);
-		if($res->num_rows)
-		{
-			while($row = $res->fetch_assoc())
-			{
-				$rows[] = $row;
-			}
-		}
-		
+		$rows = $this->database->fetchAll('SELECT * FROM vino__bouteille');
 		return $rows;
 	}
 	
@@ -34,47 +25,28 @@ class Bouteille extends Modele {
 		
 		$rows = Array();
 		$requete ='SELECT 
-						c.id as id_bouteille_cellier,
-						c.id_bouteille, 
-						c.date_achat, 
-						c.garde_jusqua, 
-						c.notes, 
-						c.prix, 
-						c.quantite,
-						c.millesime, 
-						b.id,
-						b.nom, 
-						b.type, 
-						b.image, 
-						b.code_saq, 
-						b.url_saq, 
-						b.pays, 
-						b.description,
-						t.type 
-						from vino__cellier c 
-						INNER JOIN vino__bouteille b ON c.id_bouteille = b.id
-						INNER JOIN vino__type t ON t.id = b.type
-						'; 
-		if(($res = $this->_db->query($requete)) ==	 true)
-		{
-			if($res->num_rows)
-			{
-				while($row = $res->fetch_assoc())
-				{
-					$row['nom'] = trim(utf8_encode($row['nom']));
-					$rows[] = $row;
-				}
-			}
-		}
-		else 
-		{
-			throw new Exception("Erreur de requête sur la base de donnée", 1);
-			 //$this->_db->error;
-		}
-		
-		
-		
-		return $rows;
+					c.id as id_bouteille_cellier,
+					c.id_bouteille, 
+					c.date_achat, 
+					c.garde_jusqua, 
+					c.notes, 
+					c.prix, 
+					c.quantite,
+					c.millesime, 
+					b.id,
+					b.nom, 
+					b.type, 
+					b.image, 
+					b.code_saq, 
+					b.url_saq, 
+					b.pays, 
+					b.description					
+					from vino__cellier c 
+					INNER JOIN vino__bouteille b ON c.id_bouteille = b.id
+					INNER JOIN vino__type t ON t.id = b.type
+					'; 
+	
+		return $this->database->fetchAll($requete);
 	}
 	
 	/**
