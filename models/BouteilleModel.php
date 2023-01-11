@@ -70,7 +70,7 @@ class BouteilleModel extends Modele {
 	 */
 	public function ajouterBouteilleCellier($data)
 	{
-		$database->query('INSERT INTO vino__cellier ? ', [ 
+		$this->database->query('INSERT INTO vino__cellier ? ', [ 
 			'id_bouteille' => $data['id_bouteille'],
 			'date_achat' => $data['date_achat'],
 			'garde_jusqua' => $data['garde_jusqua'],
