@@ -25,5 +25,12 @@ class Controller
         include("vues/ajouter.php");
         include("vues/pied.php");
     }
+    public function ajouterBouteilleCellier()
+    {
+        include("vues/entete.php");
+        include("vues/ajouter.php");
+        include("vues/pied.php");
+        print_r($_POST);
+    }
     
 }
