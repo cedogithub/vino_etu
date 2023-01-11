@@ -1,29 +1,22 @@
 <?php
-/**
- * Class Modele
- * Template de classe modèle. Dupliquer et modifier pour votre usage.
- * 
- * @author Jonathan Martel
- * @version 1.0
- * @update 2019-01-21
- * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
- * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
- * 
- */
 class Modele {
 	
-    protected $_db;
+    protected $database;
+		
+	/**
+	 * Récupère une instance de la connexion à la base de données.
+	 *
+	 * @return void
+	 */
 	function __construct ()
 	{
-		$this->_db = MonSQL::getInstance();
+		$dsn = 'mysql:host='.HOST.';dbname='.DATABASE;
+		$user = USER;
+		$password = PASSWORD;
+		$this->database = new Nette\Database\Connection($dsn, $user, $password);
 	}
 	
-	function __destruct ()
-	{
-		
-	}
 }
-
 
 
 

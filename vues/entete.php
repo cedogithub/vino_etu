@@ -9,10 +9,6 @@
 
 		<meta name="description" content="Un petit verre de vino">
 		<meta name="author" content="Jonathan Martel (jmartel@cmaisonneuve.qc.ca)">
-
-		<link rel="stylesheet" href="./css/normalize.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="./css/base_h5bp.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="./css/main.css" type="text/css" media="screen">
 		<base href="<?php echo BASEURL; ?>">
 	</head>
 	<body >
