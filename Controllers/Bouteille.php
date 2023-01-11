@@ -26,6 +26,7 @@ class Bouteille
         include("vues/ajouter.php");
         include("vues/pied.php");
     }
+
     public function ajouterBouteilleCellier()
     {
    
@@ -33,5 +34,11 @@ class Bouteille
         $cellier = $bte->ajouterBouteilleCellier($_POST);
         header("Location: /accueil");
     }
-    
+    public function modifierBouteille($id)
+    {
+        include("vues/entete.php");
+        include("vues/modifier.php");
+        include("vues/pied.php");
+    }
+   
 }
