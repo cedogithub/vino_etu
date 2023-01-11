@@ -13,6 +13,8 @@ $router->get('/', 'Controller@accueil');
 $router->get('/accueil', 'Controller@accueil');
 $router->get('/nouvelleBouteilleCellier', 'Controller@nouvelleBouteilleCellier');
 
+$router->post('/ajouterBouteilleCellier', 'Controller@ajouterBouteilleCellier');
+
 
 
 
