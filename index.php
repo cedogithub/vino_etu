@@ -14,7 +14,7 @@ $router->get('/accueil', 'Bouteille@accueil');
 $router->get('/nouvelleBouteilleCellier', 'Bouteille@nouvelleBouteilleCellier');
 
 $router->post('/ajouterBouteilleCellier', 'Bouteille@ajouterBouteilleCellier');
-$router->get('/afficherUnCellier/{id}', 'Bouteille@afficherUnCellier');
+$router->get('/modificationCellier/{id}', 'Bouteille@modificationCellier');
 
 
 
