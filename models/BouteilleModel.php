@@ -9,7 +9,13 @@ class BouteilleModel extends Modele {
 		return $rows;
 	}
 	
-	public function getListeBouteilleCellier()
+		
+	/**
+	 * getListeCellier
+	 *
+	 * @return void
+	 */
+	public function getListeCellier()
 	{
 		
 		$rows = Array();
