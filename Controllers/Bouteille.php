@@ -22,6 +22,8 @@ class Bouteille
     
     public function nouvelleBouteilleCellier()
     {
+        $bte = new BouteilleModel();
+        $listeBouteille = $bte->getListeBouteille();
         include("vues/entete.php");
         include("vues/ajouter.php");
         include("vues/pied.php");
@@ -33,15 +35,21 @@ class Bouteille
         $cellier = $bte->ajouterBouteilleCellier($_POST);
         header("Location: /accueil");
     }
-    
-    public function afficherUnCellier($id_cellier)
+
+    public function modificationBouteille($id_cellier)
     {
         $bte = new BouteilleModel();
-        $data = $bte->getUnCelllier($id_cellier);
+        $listeBouteille = $bte->getListeBouteille();
 
-        include("vues/entete.php");
-        include("vues/modifier.php");
-        include("vues/pied.php");
+        $data = $bte->getUnCelllier($id_cellier);
+        // Vérification si id est du lien existe
+        if (!$data) {
+            header("Location: /accueil");
+        } else {  
+            include("vues/entete.php");
+            include("vues/modifier.php");
+            include("vues/pied.php");
+        }
     }
    
 }
