@@ -53,6 +53,29 @@ class BouteilleModel extends Modele {
 	public function getUnCelllier($id_cellier)
 	{
 		
+		$requete ='SELECT 
+				c.id as id_bouteille_cellier,
+				c.id_bouteille, 
+				c.date_achat, 
+				c.garde_jusqua, 
+				c.notes, 
+				c.prix, 
+				c.quantite,
+				c.millesime, 
+				b.id,
+				b.nom, 
+				b.type, 
+				b.image, 
+				b.code_saq, 
+				b.url_saq, 
+				b.pays, 
+				b.description					
+				from vino__cellier c 
+				INNER JOIN vino__bouteille b ON c.id_bouteille = b.id
+				INNER JOIN vino__type t ON t.id = b.type
+				WHERE c.id = ?'; 
+
+		return $this->database->fetch($requete, $id_cellier);
 	}
 	
 	/**

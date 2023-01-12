@@ -29,13 +29,16 @@ class Bouteille
 
     public function ajouterBouteilleCellier()
     {
-   
         $bte = new BouteilleModel();
         $cellier = $bte->ajouterBouteilleCellier($_POST);
         header("Location: /accueil");
     }
-    public function modifierBouteille($id)
+    
+    public function afficherUnCellier($id_cellier)
     {
+        $bte = new BouteilleModel();
+        $data = $bte->getUnCelllier($id_cellier);
+
         include("vues/entete.php");
         include("vues/modifier.php");
         include("vues/pied.php");
