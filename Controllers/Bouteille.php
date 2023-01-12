@@ -5,7 +5,7 @@ class Bouteille
     public function accueil()
     {
         $bte = new BouteilleModel();
-        $data = $bte->getListeBouteilleCellier();
+        $data = $bte->getListeCellier();
         include("vues/entete.php");
         include("vues/cellier.php");
         include("vues/pied.php");    
@@ -15,7 +15,7 @@ class Bouteille
     public function listeBouteille()
     {
         $bte = new BouteilleModel();
-        $cellier = $bte->getListeBouteilleCellier();
+        $cellier = $bte->getListeCellier();
 
         echo json_encode($cellier);         
     }
