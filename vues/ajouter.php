@@ -1,27 +1,27 @@
 <form action="/ajouterBouteilleCellier" method="POST">
     <div>   
         <label for="">Date d'achat</label>
-        <input type="datetime-local" name="date_achat" id="">
+        <input type="datetime-local" name="date_achat" required>
     </div>
     <div>   
         <label for="">garde jusqua</label>
-        <input type="text" name="garde_jusqua" id="">
+        <input type="text" name="garde_jusqua" required>
     </div>
     <div>  
          <label for="">notes</label>
-        <input type="text" name="notes" id="">
+        <input type="text" name="notes" required>
     </div>
     <div>   
         <label for="">prix</label>
-        <input type="text" name="prix" id="">
+        <input type="number" name="prix" required>
     </div>
     <div>  
          <label for="">Quantité</label>
-        <input type="number" name="quantite" id="">
+        <input type="number" name="quantite" required>
     </div>
     <div>  
          <label for="">millesime</label>
-        <input type="text" name="millesime" id="">
+        <input type="text" name="millesime" required>
     </div>
     
     <!-- choix des bouteilles avec un select  -->
