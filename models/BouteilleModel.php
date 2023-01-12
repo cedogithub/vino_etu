@@ -1,46 +1,58 @@
 <?php
 class BouteilleModel extends Modele {
 	const TABLE = 'vino__bouteille';
-    
+    	
+	/**
+	 * Requête SELECT de la liste de bouteilles SAQ
+	 *
+	 * @return array[] liste de bouteille SAQ 
+	 */
 	public function getListeBouteille()
 	{
-		$rows = Array();
-		$rows = $this->database->fetchAll('SELECT * FROM vino__bouteille');
-		return $rows;
+		return $this->database->fetchAll('SELECT * FROM vino__bouteille');
 	}
 	
 		
 	/**
-	 * getListeCellier
+	 * Requête SELECT des celliers
 	 *
-	 * @return void
+	 * @return array[] liste de celliers
 	 */
 	public function getListeCellier()
 	{
-		
-		$rows = Array();
 		$requete ='SELECT 
-					c.id as id_bouteille_cellier,
-					c.id_bouteille, 
-					c.date_achat, 
-					c.garde_jusqua, 
-					c.notes, 
-					c.prix, 
-					c.quantite,
-					c.millesime, 
-					b.id,
-					b.nom, 
-					b.type, 
-					b.image, 
-					b.code_saq, 
-					b.url_saq, 
-					b.pays, 
-					b.description					
-					from vino__cellier c 
-					INNER JOIN vino__bouteille b ON c.id_bouteille = b.id
-					INNER JOIN vino__type t ON t.id = b.type'; 
+				c.id as id_bouteille_cellier,
+				c.id_bouteille, 
+				c.date_achat, 
+				c.garde_jusqua, 
+				c.notes, 
+				c.prix, 
+				c.quantite,
+				c.millesime, 
+				b.id,
+				b.nom, 
+				b.type, 
+				b.image, 
+				b.code_saq, 
+				b.url_saq, 
+				b.pays, 
+				b.description					
+				from vino__cellier c 
+				INNER JOIN vino__bouteille b ON c.id_bouteille = b.id
+				INNER JOIN vino__type t ON t.id = b.type'; 
 
 		return $this->database->fetchAll($requete);
+	}
+	
+	/**
+	 * Requête SELECT d'un cellier
+	 *
+	 * @param  int $id_cellier id du cellier
+	 * @return array un cellier
+	 */
+	public function getUnCelllier($id_cellier)
+	{
+		
 	}
 	
 	/**
