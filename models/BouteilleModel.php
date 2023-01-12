@@ -36,7 +36,8 @@ class BouteilleModel extends Modele {
 				b.code_saq, 
 				b.url_saq, 
 				b.pays, 
-				b.description					
+				b.description,
+				t.type as type_nom				
 				from vino__cellier c 
 				INNER JOIN vino__bouteille b ON c.id_bouteille = b.id
 				INNER JOIN vino__type t ON t.id = b.type'; 
@@ -69,7 +70,8 @@ class BouteilleModel extends Modele {
 				b.code_saq, 
 				b.url_saq, 
 				b.pays, 
-				b.description					
+				b.description,
+				t.type as type_nom									
 				from vino__cellier c 
 				INNER JOIN vino__bouteille b ON c.id_bouteille = b.id
 				INNER JOIN vino__type t ON t.id = b.type
