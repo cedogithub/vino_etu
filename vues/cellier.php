@@ -16,9 +16,9 @@
         </div>
         <div class="options" data-id="<?php echo $bouteille['id_bouteille_cellier'] ?>">
        
-            <a href="/modificationBouteille/<?= $bouteille['id_bouteille_cellier']?>" >Modifier</a>
-            <button class='btnAjouter'  disabled=true>Ajouter</button>
-            <button class='btnBoire'  disabled=true>Boire</button>
+            <!-- <a href="/modificationBouteille/<?= $bouteille['id_bouteille_cellier']?>" >Modifier</a> -->
+            <!-- <button class='btnAjouter'  disabled=true>Ajouter</button>
+            <button class='btnBoire'  disabled=true>Boire</button> -->  
         </div>
     </div>
 <?php } ?>	
