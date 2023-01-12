@@ -17,3 +17,6 @@ php -S localhost:8089
 ### Database PDO
 - Documentation
 - https://doc.nette.org/en/database/core#toc-insert-update-delete
+
+### projet déployé sur webdev
+- https://e2194460.webdev.cmaisonneuve.qc.ca/accueil
