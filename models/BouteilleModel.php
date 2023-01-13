@@ -138,7 +138,6 @@ class BouteilleModel extends Modele {
 	public function modifierQuantiteBouteilleCellier($id, $nombre)
 	{
 		$requete = "UPDATE vino__cellier SET quantite = GREATEST(quantite + ". $nombre. ", 0) WHERE id = ". $id;
-		//echo $requete;
         $res = $this->database->query($requete);
 		return $res->getRowCount();
 	}

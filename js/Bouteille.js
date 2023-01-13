@@ -15,6 +15,9 @@ class Bouteille {
         this.el_btn_boire.addEventListener('click', this.boireBouteille); 
     }
 
+    /**
+     * Requête fetch ajout quantite de bouteille
+     */
     ajouterBouteille = () => {
         let requete = new Request("/ajouterQuantiteBouteille", {method: 'POST', body: '{"id": '+this.id+'}'});
         fetch(requete).then( (res) => {
@@ -26,6 +29,9 @@ class Bouteille {
         }) 
     }
 
+    /**
+     * Requête fetch diminution quantite de bouteille
+     */
     boireBouteille = () => {
         let requete = new Request("/boireQuantiteBouteille", {method: 'POST', body: '{"id": '+this.id+'}'});
         fetch(requete).then( (res) => {
