@@ -63,5 +63,22 @@ class Bouteille
             include("vues/pied.php");
         }
     }
+
+    
+    public function ajouterQuantiteBouteille() {
+        $body = json_decode(file_get_contents('php://input'));
+        $bte = new BouteilleModel();
+		$resultat = $bte->modifierQuantiteBouteilleCellier($body->id, 1);
+        echo json_encode($resultat);
+    }
+   
+
+    public function boireQuantiteBouteille() {
+        $body = json_decode(file_get_contents('php://input'));
+        $bte = new BouteilleModel();
+		$resultat = $bte->modifierQuantiteBouteilleCellier($body->id, -1);
+        echo json_encode($resultat);
+    }
+
    
 }

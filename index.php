@@ -17,6 +17,10 @@ $router->post('/ajouterBouteilleCellier', 'Bouteille@ajouterBouteilleCellier');
 $router->get('/modificationBouteille/{id}', 'Bouteille@modificationBouteille');
 
 
+$router->post('/boireQuantiteBouteille', 'Bouteille@boireQuantiteBouteille');
+$router->post('/ajouterQuantiteBouteille', 'Bouteille@ajouterQuantiteBouteille');
+
+
 
 // Run it!
 $router->run();

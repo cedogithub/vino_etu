@@ -9,7 +9,11 @@
 
 		<meta name="description" content="Un petit verre de vino">
 		<meta name="author" content="Jonathan Martel (jmartel@cmaisonneuve.qc.ca)">
+
 		<base href="<?php echo BASEURL; ?>">
+		<!--<script src="./js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>-->
+		<script src="/js/Bouteille.js"></script>
+		<script src="/js/main.js" defer></script>
 	</head>
 	<body >
 		<header>
