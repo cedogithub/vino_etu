@@ -14,11 +14,11 @@ class BouteilleModel extends Modele {
 	
 		
 	/**
-	 * Requête SELECT des celliers
+	 * Requête SELECT des bouteilles d'un cellier
 	 *
-	 * @return array[] liste de celliers
+	 * @return array[] liste de bouteilles d'un cellier
 	 */
-	public function getListeCellier()
+	public function getBouteillesCellier()
 	{
 		$requete ='SELECT 
 				c.id as id_bouteille_cellier,
@@ -46,12 +46,12 @@ class BouteilleModel extends Modele {
 	}
 	
 	/**
-	 * Requête SELECT d'un cellier
+	 * Requête SELECT d'une bouteille d'un cellier
 	 *
 	 * @param  int $id_cellier id du cellier
 	 * @return array un cellier
 	 */
-	public function getUnCelllier($id_cellier)
+	public function getUneBouteilleCellier($id_cellier)
 	{
 		
 		$requete ='SELECT 
