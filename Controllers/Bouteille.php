@@ -64,6 +64,7 @@ class Bouteille
         }
     }
 
+    
     public function ajouterQuantiteBouteille() {
         $body = json_decode(file_get_contents('php://input'));
         $bte = new BouteilleModel();
