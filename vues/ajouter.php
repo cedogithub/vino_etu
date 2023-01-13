@@ -21,7 +21,7 @@
     </div>
     <div>  
          <label for="">millesime</label>
-        <input type="text" name="millesime" required>
+        <input type="number" name="millesime" required>
     </div>
     
     <!-- choix des bouteilles avec un select  -->
