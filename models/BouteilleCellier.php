@@ -61,17 +61,31 @@ class BouteilleCellier extends Modele {
 	 */
 	public function ajouterBouteilleCellier($data)
 	{
-		$this->database->query('INSERT INTO vino__cellier ? ', [ 
-			'id_bouteille' => $data['id_bouteille'],
-			'date_achat' => $data['date_achat'],
-			'garde_jusqua' => $data['garde_jusqua'],
-			'notes' => $data['notes'],
-			'prix' => $data['prix'],
-			'quantite' => $data['quantite'],
-			'millesime' => $data['millesime'],
+		$this->database->query('INSERT INTO bouteille_du_cellier ? ', [ 
+			'bdc_cel_id' => $data['bdc_cel_id '],
+			'bdc_bout_id' => $data['bdc_bout_id'],
+			'bdc_date_achat' => $data['bdc_date_achat'],
+			'bdc_garde_jusqua' => $data['bdc_garde_jusqua'],
+			'bdc_notes' => $data['bdc_notes'],
+			'bdc_quantite' => $data['bdc_quantite'],
+			'bdc_millesime' => $data['bdc_millesime']
 		]);
         
 		return $this->database->getInsertId();
+	}
+
+	public function modifierBouteilleCellier()
+	{
+		$result = $this->database->query('UPDATE users SET', [
+			'bdc_bout_id' => $data['bdc_bout_id'],
+			'bdc_date_achat' => $data['bdc_date_achat'],
+			'bdc_garde_jusqua' => $data['bdc_garde_jusqua'],
+			'bdc_notes' => $data['bdc_notes'],
+			'bdc_quantite' => $data['bdc_quantite'],
+			'bdc_millesime' => $data['bdc_millesime']
+		], 'WHERE bdc_cel_id = ?', $data['bdc_cel_id']);
+
+		$result->getRowCount();
 	}
 	
 	
@@ -95,3 +109,5 @@ class BouteilleCellier extends Modele {
 
 
 ?>
+
+
