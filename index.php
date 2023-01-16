@@ -1,9 +1,6 @@
 <?php
-
 require_once __DIR__. '/dataconf.model.php';
-require __DIR__ . '/config/config.php';
 require __DIR__ . '/vendor/autoload.php';
-require __DIR__ . '/Controllers/Bouteille.php';
 
 // Create Router instance
 $router = new \Bramus\Router\Router();
@@ -25,6 +22,6 @@ $router->post('/ajouterQuantiteBouteille', 'Bouteille@ajouterQuantiteBouteille')
 // Run it!
 $router->run();
 
+// (new BouteilleSAQ())->fetch_bottle_from_SAQ('1');
 
-
-?>
+   
