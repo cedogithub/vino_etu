@@ -5,6 +5,6 @@
         "fabpot/goutte": "^4.0"
     },
     "autoload": {
-        "classmap": ["Controllers/", "models/", "public", "config/"]
+        "classmap": ["controllers/", "models/", "public", "config/"]
     }
 }

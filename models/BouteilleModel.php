@@ -1,7 +1,6 @@
 <?php
-class BouteilleCellier extends Modele {
+class BouteilleModel extends Modele {
     	
-	
 	/**
 	 * Requête SELECT des bouteilles d'un cellier
 	 *
