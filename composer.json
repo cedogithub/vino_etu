@@ -1,6 +1,10 @@
 {
     "require": {
         "bramus/router": "~1.6",
-        "nette/database": "^3.1"
+        "nette/database": "^3.1",
+        "fabpot/goutte": "^4.0"
+    },
+    "autoload": {
+        "classmap": ["Controllers/", "models/", "public", "config/"]
     }
 }

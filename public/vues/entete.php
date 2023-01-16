@@ -12,8 +12,8 @@
 
 		<base href="<?php echo BASEURL; ?>">
 		<!--<script src="./js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>-->
-		<script src="/js/Bouteille.js"></script>
-		<script src="/js/main.js" defer></script>
+		<script src="/public/js/Bouteille.js"></script>
+		<script src="/public/js/main.js" defer></script>
 	</head>
 	<body >
 		<header>

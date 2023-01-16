@@ -1,18 +1,7 @@
 <?php
-class BouteilleModel extends Modele {
-	const TABLE = 'vino__bouteille';
+class BouteilleCellier extends Modele {
     	
-	/**
-	 * Requête SELECT de la liste de bouteilles SAQ
-	 *
-	 * @return array[] liste de bouteille SAQ 
-	 */
-	public function getListeBouteille()
-	{
-		return $this->database->fetchAll('SELECT * FROM vino__bouteille');
-	}
 	
-		
 	/**
 	 * Requête SELECT des bouteilles d'un cellier
 	 *
@@ -20,29 +9,12 @@ class BouteilleModel extends Modele {
 	 */
 	public function getBouteillesCellier()
 	{
-		$requete ='SELECT 
-				c.id as id_bouteille_cellier,
-				c.id_bouteille, 
-				c.date_achat, 
-				c.garde_jusqua, 
-				c.notes, 
-				c.prix, 
-				c.quantite,
-				c.millesime, 
-				b.id,
-				b.nom, 
-				b.type, 
-				b.image, 
-				b.code_saq, 
-				b.url_saq, 
-				b.pays, 
-				b.description,
-				t.type as type_nom				
-				from vino__cellier c 
-				INNER JOIN vino__bouteille b ON c.id_bouteille = b.id
-				INNER JOIN vino__type t ON t.id = b.type'; 
+		$requete ='SELECT *			
+				from bouteille_du_cellier 
+				INNER JOIN cellier ON cellier.cel_id = bouteille_du_cellier.bdc_cel_id
+				WHERE cellier.cel_id = ?'; 
 
-		return $this->database->fetchAll($requete);
+		return $this->database->fetchAll($requete, '1');
 	}
 	
 	/**
@@ -54,30 +26,7 @@ class BouteilleModel extends Modele {
 	public function getUneBouteilleCellier($id_cellier)
 	{
 		
-		$requete ='SELECT 
-				c.id as id_bouteille_cellier,
-				c.id_bouteille, 
-				c.date_achat, 
-				c.garde_jusqua, 
-				c.notes, 
-				c.prix, 
-				c.quantite,
-				c.millesime, 
-				b.id,
-				b.nom, 
-				b.type, 
-				b.image, 
-				b.code_saq, 
-				b.url_saq, 
-				b.pays, 
-				b.description,
-				t.type as type_nom									
-				from vino__cellier c 
-				INNER JOIN vino__bouteille b ON c.id_bouteille = b.id
-				INNER JOIN vino__type t ON t.id = b.type
-				WHERE c.id = ?'; 
-
-		return $this->database->fetch($requete, $id_cellier);
+		
 	}
 	
 	/**
@@ -98,7 +47,6 @@ class BouteilleModel extends Modele {
 		$nom = $this->_db->real_escape_string($nom);
 		$nom = preg_replace("/\*/","%" , $nom);
 		 
-		//echo $nom;
 		$requete ='SELECT id, nom FROM vino__bouteille where LOWER(nom) like LOWER("%'. $nom .'%") LIMIT 0,'. $nb_resultat; 
 		return $this->database->fetchAll($requete);
 	}
