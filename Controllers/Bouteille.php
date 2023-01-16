@@ -8,7 +8,7 @@ class Bouteille
      */
     public function accueil()
     {
-        $bte = new BouteilleCellier();
+        $bte = new BouteilleModel();
         $data = $bte->getBouteillesCellier();
         include("public/vues/entete.php");
         include("public/vues/cellier.php");

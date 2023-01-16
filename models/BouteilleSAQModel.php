@@ -1,5 +1,5 @@
 <?php
-class BouteilleSAQ extends Modele
+class BouteilleSAQModel extends Modele
 {
        /**
 	 * Requête SELECT de la liste de bouteilles SAQ
@@ -10,7 +10,6 @@ class BouteilleSAQ extends Modele
 	{
 		return $this->database->fetchAll('SELECT * FROM bouteille');
 	}
-
 
     public function addBouteilleSAQ($data) 
     {
