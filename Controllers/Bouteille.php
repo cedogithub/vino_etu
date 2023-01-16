@@ -1,5 +1,4 @@
 <?php
-
 class Bouteille
 {    
     /**
@@ -9,11 +8,11 @@ class Bouteille
      */
     public function accueil()
     {
-        $bte = new BouteilleModel();
+        $bte = new BouteilleCellier();
         $data = $bte->getBouteillesCellier();
-        include("vues/entete.php");
-        include("vues/cellier.php");
-        include("vues/pied.php");    
+        include("public/vues/entete.php");
+        include("public/vues/cellier.php");
+        include("public/vues/pied.php");    
     }
         
     /**
@@ -23,9 +22,9 @@ class Bouteille
      */
     public function nouvelleBouteilleCellier()
     {
-        $bte = new BouteilleModel();
-        $listeBouteille = $bte->getListeBouteille();
-        include("vues/entete.php");
+        $oSAQ = new BouteilleSAQ();
+        $listeBouteille = $oSAQ->getListeBouteille();
+        include("public/vues/entete.php");
         include("vues/ajouter.php");
         include("vues/pied.php");
     }
@@ -37,7 +36,7 @@ class Bouteille
      */
     public function ajouterBouteilleCellier()
     {
-        $bte = new BouteilleModel();
+        $bte = new BouteilleCellier();
         $cellier = $bte->ajouterBouteilleCellier($_POST);
         header("Location: /accueil");
     }
@@ -50,7 +49,7 @@ class Bouteille
      */
     public function modificationBouteille($id_bouteille)
     {
-        $bte = new BouteilleModel();
+        $bte = new BouteilleCellier();
         $listeBouteille = $bte->getListeBouteille();
 
         $data = $bte->getUneBouteilleCellier($id_bouteille);
@@ -67,7 +66,7 @@ class Bouteille
     
     public function ajouterQuantiteBouteille() {
         $body = json_decode(file_get_contents('php://input'));
-        $bte = new BouteilleModel();
+        $bte = new BouteilleCellier();
 		$resultat = $bte->modifierQuantiteBouteilleCellier($body->id, 1);
         echo json_encode($resultat);
     }
@@ -75,7 +74,7 @@ class Bouteille
 
     public function boireQuantiteBouteille() {
         $body = json_decode(file_get_contents('php://input'));
-        $bte = new BouteilleModel();
+        $bte = new BouteilleCellier();
 		$resultat = $bte->modifierQuantiteBouteilleCellier($body->id, -1);
         echo json_encode($resultat);
     }
