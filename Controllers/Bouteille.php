@@ -10,9 +10,9 @@ class Bouteille
     {
         $bte = new BouteilleModel();
         $data = $bte->getBouteillesCellier();
-        include("public/vues/entete.php");
-        include("public/vues/cellier.php");
-        include("public/vues/pied.php");    
+        include("template/cellier/entete.php");
+        include("template/cellier/cellier.php");
+        include("template/cellier/pied.php");    
     }
         
     /**
