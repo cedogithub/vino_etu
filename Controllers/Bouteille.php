@@ -6,7 +6,7 @@ class Bouteille
      *
      * @return void
      */
-    public function accueil()
+    public function cellier()
     {
         $this->render('cellier/cellier.html');
     }
@@ -18,11 +18,7 @@ class Bouteille
      */
     public function nouvelleBouteilleCellier()
     {
-        $oSAQ = new BouteilleSAQ();
-        $listeBouteille = $oSAQ->getListeBouteille();
-        include("public/vues/entete.php");
-        include("vues/ajouter.php");
-        include("vues/pied.php");
+
     }
     
     /**
