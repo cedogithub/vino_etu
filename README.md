@@ -2,6 +2,8 @@
 
 - https://jaimemonvino.com/
 
+### version dynamique (php + js) bientôt disponible
+
 ### Reinstaller vos librairies
 ```js
 composer update

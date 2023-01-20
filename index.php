@@ -6,9 +6,6 @@ require __DIR__ . '/vendor/autoload.php';
 $router = new \Bramus\Router\Router();
 
 
-
-/* route de sécurité: before*/
-
 $router->get('/', 'Utilisateur@accueil');
 $router->get('/utilisateur/accueil', 'Utilisateur@accueil');
 $router->get('/utilisateur/inscription', 'Utilisateur@inscription');
@@ -16,12 +13,12 @@ $router->get('/utilisateur/inscription', 'Utilisateur@inscription');
 
 $router->post('/utilisateur/connection', 'Utilisateur@connection');
 $router->get('/utilisateur/deconnexion', 'Utilisateur@deconnexion');
-$router->post('/utilisateur/creation', 'Utilisateur@connection');
+$router->post('/utilisateur/creation', 'Utilisateur@creation'); 
 
 
-/* route de sécurité: before */
+/* route de sécurité que je vais ajouté pour voir si user est authentifié */
 
-$router->get('/bouteille/accueil', 'Bouteille@accueil');
+$router->get('/bouteille/cellier', 'Bouteille@cellier');
 $router->get('/bouteille/nouveau', 'Bouteille@nouvelleBouteilleCellier');
 $router->post('/bouteille/ajouter', 'Bouteille@ajouterBouteilleCellier');
 $router->get('/bouteille/modifier/{id}', 'Bouteille@modificationBouteille');
