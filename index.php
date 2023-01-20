@@ -1,7 +1,8 @@
 <?php
+session_start();
 require_once __DIR__. '/dataconf.model.php';
 require __DIR__ . '/vendor/autoload.php';
-
+require __DIR__ . '/models/UtilisateurModel.php';
 // Create Router instance
 $router = new \Bramus\Router\Router();
 
@@ -16,12 +17,17 @@ $router->get('/modificationBouteille/{id}', 'Bouteille@modificationBouteille');
 
 $router->post('/boireQuantiteBouteille', 'Bouteille@boireQuantiteBouteille');
 $router->post('/ajouterQuantiteBouteille', 'Bouteille@ajouterQuantiteBouteille');
+$router->post('/ajouterQuantiteBouteille', 'Bouteille@ajouterQuantiteBouteille');
 
-
-
+$utilisateur = new UtilisateurModel();
+print_r($utilisateur->getUsager());
 // Run it!
-$router->run();
+
 
 // (new BouteilleSAQ())->fetch_bottle_from_SAQ('1');
 
+$router->post('/connection', 'Utilisateur@connection');
+$router->get('/deconnexion', 'Utilisateur@deconnexion');
+
+$router->run();
    
