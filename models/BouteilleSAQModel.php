@@ -14,7 +14,7 @@ class BouteilleSAQModel extends Modele
     public function addBouteilleSAQ($data) 
     {
         extract($data);
-        $this->database->query('INSERT INTO bouteille ?', [ 
+        $this->database->query('INSERT INTO bouteille_saq ?', [ 
             'bout_nom' => $bout_nom,
             'bout_image' => $bout_image,
             'bout_code_saq' => $bout_code_saq,

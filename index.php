@@ -21,13 +21,19 @@ $router->post('/ajouterQuantiteBouteille', 'Bouteille@ajouterQuantiteBouteille')
 
 $utilisateur = new UtilisateurModel();
 print_r($utilisateur->getUsager());
-// Run it!
 
 
-// (new BouteilleSAQ())->fetch_bottle_from_SAQ('1');
 
 $router->post('/connection', 'Utilisateur@connection');
 $router->get('/deconnexion', 'Utilisateur@deconnexion');
 
 $router->run();
+=======
+// SAQ
+/* for ($i=1; $i < 10 ; $i++) { 
+}
+(new BouteilleSAQModel())->fetch_bottle_from_SAQ($i);
+ */
+/* (new BouteilleSAQModel())->fetch_bottle_from_SAQ("1"); */
+
    

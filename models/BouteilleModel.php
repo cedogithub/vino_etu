@@ -2,18 +2,21 @@
 class BouteilleModel extends Modele {
     	
 	/**
-	 * Requête SELECT des bouteilles d'un cellier
+	 * Requête SELECT des bouteilles d'un cellier de l' utilisateur
 	 *
-	 * @return array[] liste de bouteilles d'un cellier
+	 * @return array[] liste de bouteilles d'un cellier de l'utilisateur
 	 */
 	public function getBouteillesCellier()
 	{
-		$requete ='SELECT *			
-				from bouteille_du_cellier 
-				INNER JOIN cellier ON cellier.cel_id = bouteille_du_cellier.bdc_cel_id
-				WHERE cellier.cel_id = ?'; 
+		$requete ="SELECT 
+					bouteille_du_cellier.*,
+				 	bouteille_saq.*			
+				from cellier
+				INNER JOIN bouteille_du_cellier ON cellier.cel_id = bouteille_du_cellier.bdc_cel_id
+				INNER JOIN bouteille_saq on bouteille_du_cellier.bdc_bout_id = bouteille_saq.bout_id 
+				WHERE cellier.cel_uti_id = ?";
 
-		return $this->database->fetchAll($requete, '1');
+		return $this->database->fetchAll($requete, 1);
 	}
 	
 	/**
@@ -22,9 +25,18 @@ class BouteilleModel extends Modele {
 	 * @param  int $id_cellier id du cellier
 	 * @return array un cellier
 	 */
-	public function getUneBouteilleCellier($id_cellier)
+	public function getUneBouteilleCellier($id_bouteille)
 	{
-		
+		$requete ="SELECT 
+					bouteille_du_cellier.*,
+				 	bouteille_saq.*			
+				from cellier
+				INNER JOIN bouteille_du_cellier ON cellier.cel_id = bouteille_du_cellier.bdc_cel_id
+				INNER JOIN bouteille_saq on bouteille_du_cellier.bdc_bout_id = bouteille_saq.bout_id 
+				WHERE cellier.cel_uti_id = ?
+				AND bouteille_du_cellier.bdc_id";
+
+		return $this->database->fetchAll($requete, 1, $id_bouteille);
 		
 	}
 	
@@ -98,7 +110,7 @@ class BouteilleModel extends Modele {
 	 */
 	public function modifierQuantiteBouteilleCellier($id, $nombre)
 	{
-		$requete = "UPDATE vino__cellier SET quantite = GREATEST(quantite + ". $nombre. ", 0) WHERE id = ". $id;
+		$requete = "UPDATE bouteille_du_cellier SET bdc_quantite = GREATEST(bdc_quantite + ". $nombre. ", 0) WHERE id = ". $id;
         $res = $this->database->query($requete);
 		return $res->getRowCount();
 	}
