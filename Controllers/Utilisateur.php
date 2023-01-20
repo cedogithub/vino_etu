@@ -17,8 +17,12 @@ class Utilisateur
         unset($_SESSION['utilisateur']);
         header("Location: /accueil"); 
     }
-
-
+    public function creation()
+    {
+       $user = new UtilisateurModel();
+        $user->creerUsager($_POST);
+        header("Location: /utilisateur/index"); 
+    }
 
 
 
