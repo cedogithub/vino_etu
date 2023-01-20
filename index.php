@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once __DIR__. '/dataconf.model.php';
 require __DIR__ . '/vendor/autoload.php';
 
@@ -22,6 +23,11 @@ $router->post('/ajouterQuantiteBouteille', 'Bouteille@ajouterQuantiteBouteille')
 // Run it!
 $router->run();
 
-// (new BouteilleSAQ())->fetch_bottle_from_SAQ('1');
+
+// SAQ
+/* for ($i=1; $i < 10 ; $i++) { 
+}
+(new BouteilleSAQModel())->fetch_bottle_from_SAQ($i);
+ */
 
    
