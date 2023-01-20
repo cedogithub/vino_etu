@@ -8,13 +8,7 @@ class Bouteille
      */
     public function accueil()
     {
-       /*  $bte = new BouteilleModel();
-        $data = $bte->getBouteillesCellier();
-        
-        include("template/cellier/entete.php");
-        include("template/cellier/cellier.php");
-        include("template/cellier/pied.php");     */
-        $this->render('utilisateur/connexion');
+        $this->render('cellier/cellier.html');
     }
         
     /**
@@ -96,6 +90,6 @@ class Bouteille
             'cache' => false
         ]);
         $twig->addGlobal('session', $_SESSION);
-        echo $twig->render($file_name.'.html', $data);
+        echo $twig->render($file_name , $data);
     }
 }
