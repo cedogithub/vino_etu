@@ -11,7 +11,7 @@ $router->get('/utilisateur/accueil', 'Utilisateur@accueil');
 $router->get('/utilisateur/inscription', 'Utilisateur@inscription');
 
 
-$router->post('/utilisateur/connection', 'Utilisateur@connection');
+$router->post('/utilisateur/connexion', 'Utilisateur@connexion');
 $router->get('/utilisateur/deconnexion', 'Utilisateur@deconnexion');
 $router->post('/utilisateur/creation', 'Utilisateur@creation'); 
 
