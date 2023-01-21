@@ -24,7 +24,22 @@ class Utilisateur
         header("Location: /utilisateur/accueil"); 
     }
 
+    /**
+     * Tente l'ouvertur d'une connexion : si réussi, redirige vers  
+     * et sinon, réaffiche le formulaire de connexion avec un message d'erreur.
+     */
+    public function connexion()
+    {
+        $erreur = false;
+        $courriel = $_POST['uti_courriel'];
+        $mdp = $_POST['uti_mdp'];
 
+        $model = new UtilisateurModel();
+
+        $utilisateur = $model->getUsager($courriel); 
+
+        if(!$utilisateur || !password_verify($mdp, $utilisateur['uti_mdp']))
+    }
 
 
 
