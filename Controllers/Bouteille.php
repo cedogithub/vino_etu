@@ -6,15 +6,9 @@ class Bouteille
      *
      * @return void
      */
-    public function accueil()
+    public function cellier()
     {
-       /*  $bte = new BouteilleModel();
-        $data = $bte->getBouteillesCellier();
-        
-        include("template/cellier/entete.php");
-        include("template/cellier/cellier.php");
-        include("template/cellier/pied.php");     */
-        $this->render('utilisateur/connexion');
+        $this->render('cellier/cellier.html');
     }
         
     /**
@@ -24,11 +18,7 @@ class Bouteille
      */
     public function nouvelleBouteilleCellier()
     {
-        $oSAQ = new BouteilleSAQ();
-        $listeBouteille = $oSAQ->getListeBouteille();
-        include("public/vues/entete.php");
-        include("vues/ajouter.php");
-        include("vues/pied.php");
+
     }
     
     /**
@@ -96,6 +86,6 @@ class Bouteille
             'cache' => false
         ]);
         $twig->addGlobal('session', $_SESSION);
-        echo $twig->render($file_name.'.html', $data);
+        echo $twig->render($file_name , $data);
     }
 }
