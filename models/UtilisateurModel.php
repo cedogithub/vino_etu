@@ -18,13 +18,11 @@ class UtilisateurModel extends Modele {
     public function creerUsager($data){
             
         $this->database->query('INSERT INTO utilisateur ?', [ 
-            'uti_id' => $data['uti_id'],
 			'uti_courriel' => $data['uti_courriel'],
 			'uti_mdp' => password_hash($data['uti_mdp'], PASSWORD_DEFAULT),
 			'uti_nom' => $data['uti_nom'],
 			'uti_prenom' => $data['uti_prenom'],
-			'uti_dcc' => $data['uti_dcc'],
-			'uti_rol_id' => $data['uti_rol_id'] 
+			'uti_rol_id' => '1'
         ]);
  
       

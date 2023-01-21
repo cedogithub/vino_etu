@@ -33,13 +33,24 @@ class Utilisateur
         $erreur = false;
         $courriel = $_POST['uti_courriel'];
         $mdp = $_POST['uti_mdp'];
-
         $model = new UtilisateurModel();
 
         $utilisateur = $model->getUsager($courriel); 
+         if(!$utilisateur || !password_verify($mdp, $utilisateur['uti_mdp'])) {
+            $erreur = "Mauvaise combinaison courriel/mot de passe";
+         }
 
-        if(!$utilisateur || !password_verify($mdp, $utilisateur['uti_mdp']))
-    }
+         if(!$erreur) {
+            $_SESSION['utilisateur'] = $utilisateur;
+            header("Location: /bouteille/cellier"); 
+        }
+        else {
+            $this->render('utilisateur/connexion.html', [
+                "erreur" => $erreur
+            ]);  
+
+        }
+     }
 
 
 
