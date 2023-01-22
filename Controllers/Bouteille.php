@@ -1,8 +1,16 @@
 <?php
 class Bouteille
-{    
+{
+    public function protection()
+    {
+        if (!isset($_SESSION['utilisateur'])) {
+            header('location: /utilisateur/accueil');
+            exit();
+        } 
+    } 
+
     /**
-     * Affiche la page d'accueil
+     * Affiche la page du cellier de l'utilisateur
      *
      * @return void
      */
@@ -10,6 +18,7 @@ class Bouteille
     {
         $this->render('cellier/cellier.html');
     }
+
         
     /**
      * Affiche la page d'ajout de bouteille
@@ -31,6 +40,7 @@ class Bouteille
         $bte = new BouteilleCellier();
         $cellier = $bte->ajouterBouteilleCellier($_POST);
         header("Location: /accueil");
+        exit();
     }
     
     /**
@@ -48,6 +58,7 @@ class Bouteille
         // Vérification si id existe
         if ( ! $data) {
             header("Location: /accueil");
+            exit();
         } else {  
             include("vues/entete.php");
             include("vues/modifier.php");
@@ -70,6 +81,9 @@ class Bouteille
 		$resultat = $bte->modifierQuantiteBouteilleCellier($body->id, -1);
         echo json_encode($resultat);
     }
+
+
+   
 
         
     /**

@@ -11,21 +11,17 @@ class Utilisateur
         $this->render('utilisateur/inscription.html');  
     }
 
-    public function deconnexion()
-    {
-        unset($_SESSION['utilisateur']);
-        header("Location: /utilisateur/accueil"); 
-    }
 
     public function creation()
     {
         $user = new UtilisateurModel();
         $user->creerUsager($_POST);
         header("Location: /utilisateur/accueil"); 
+        exit();
     }
 
     /**
-     * Tente l'ouvertur d'une connexion : si réussi, redirige vers  
+     * Tente l'ouverture d'une connexion : si réussi, redirige vers  
      * et sinon, réaffiche le formulaire de connexion avec un message d'erreur.
      */
     public function connexion()
@@ -38,23 +34,28 @@ class Utilisateur
         $utilisateur = $model->getUsager($courriel); 
          if(!$utilisateur || !password_verify($mdp, $utilisateur['uti_mdp'])) {
             $erreur = "Mauvaise combinaison courriel/mot de passe";
-         }
+        }
 
          if(!$erreur) {
             $_SESSION['utilisateur'] = $utilisateur;
             header("Location: /bouteille/cellier"); 
+            exit();
         }
         else {
             $this->render('utilisateur/connexion.html', [
                 "erreur" => $erreur
             ]);  
-
         }
      }
 
+     public function deconnexion()
+     {
+        unset($_SESSION['utilisateur']);
+        header("Location: /utilisateur/accueil"); 
+        exit();
+     }
 
-
-          
+      
     /**
      * Affiche la page demandée 
      *

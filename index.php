@@ -16,7 +16,8 @@ $router->get('/utilisateur/deconnexion', 'Utilisateur@deconnexion');
 $router->post('/utilisateur/creation', 'Utilisateur@creation'); 
 
 
-/* route de sécurité que je vais ajouté pour voir si user est authentifié */
+/* route s'assurant que l'usager soit authentifié */
+$router->before('GET|POST', '/bouteille/.*', 'Bouteille@protection');
 
 $router->get('/bouteille/cellier', 'Bouteille@cellier');
 $router->get('/bouteille/nouveau', 'Bouteille@nouvelleBouteilleCellier');
