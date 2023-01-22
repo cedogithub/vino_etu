@@ -27,3 +27,4 @@ node_modules
 package*
 tailwind.conf*
 conf-tailwind*
+tailwind-conf*

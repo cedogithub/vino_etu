@@ -39,11 +39,10 @@
                 </label>
                 <input name="uti_mdp" class="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
                 {% if erreur %}
-                <p class="text-red-500 text-xs italic">{{  erreur }}</p>
-                {% endif %}              </div>
-=======
-                <p class="text-red-500 text-xs italic">Please choose a password.</p>
-              </div>
+                <p class="text-red-500 text-xs italic">{{ erreur }}</p>
+                {% endif %}           
+                <!-- <p class="text-red-500 text-xs italic">Please choose a password.</p> -->  
+             </div>
               <div class="flex items-center justify-between">
                 <button class="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                   Connexion
@@ -53,9 +52,6 @@
                 </a>
               </div>
             </form>
-
-          
-            
             <p class="text-center text-gray-500 text-xs">
               &copy;2023 Vino Corp. All rights reserved.
             </p>
