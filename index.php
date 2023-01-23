@@ -21,7 +21,6 @@ $router->before('GET|POST', '/bouteille/.*', 'Bouteille@protection');
 
 $router->get('/bouteille/cellier', 'Bouteille@cellier');
 $router->get('/bouteille/nouveau', 'Bouteille@nouveau');
-$router->post('/bouteille/ajouter', 'Bouteille@ajouterBouteilleCellier');
 $router->get('/bouteille/modifier/{id}', 'Bouteille@modificationBouteille');
 $router->post('/bouteille/quantite/boire/', 'Bouteille@boireQuantiteBouteille');
 $router->post('/bouteille/quantite/ajouter/', 'Bouteille@ajouterQuantiteBouteille');
