@@ -36,8 +36,9 @@ class Utilisateur
             $erreur = "Mauvaise combinaison courriel/mot de passe";
         }
 
-         if(!$erreur) {
+        if(!$erreur) {
             $_SESSION['utilisateur'] = $utilisateur;
+            $_SESSION['uti_id'] = $_SESSION['utilisateur']['uti_id'];
             header("Location: /bouteille/cellier"); 
             exit();
         }
@@ -51,6 +52,7 @@ class Utilisateur
      public function deconnexion()
      {
         unset($_SESSION['utilisateur']);
+        unset($_SESSION['uti_id']);
         header("Location: /utilisateur/accueil"); 
         exit();
      }

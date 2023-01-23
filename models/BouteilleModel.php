@@ -8,15 +8,17 @@ class BouteilleModel extends Modele {
 	 */
 	public function getBouteillesCellier()
 	{
-		$requete ="SELECT 
-					bouteille_du_cellier.*,
-				 	bouteille_saq.*			
-				from cellier
-				INNER JOIN bouteille_du_cellier ON cellier.cel_id = bouteille_du_cellier.bdc_cel_id
-				INNER JOIN bouteille_saq on bouteille_du_cellier.bdc_bout_id = bouteille_saq.bout_id 
-				WHERE cellier.cel_uti_id = ?";
-
-		return $this->database->fetchAll($requete, 1);
+		return $this->database->fetchAll(
+			"SELECT 
+				bouteille_du_cellier.*,
+				bouteille_saq.*			
+			from cellier
+			INNER JOIN bouteille_du_cellier ON cellier.cel_id = bouteille_du_cellier.bdc_cel_id
+			INNER JOIN bouteille_saq on bouteille_du_cellier.bdc_bout_id = bouteille_saq.bout_id 
+			WHERE cellier.cel_uti_id = ?",
+			$_SESSION['uti_id']
+		);
+	
 	}
 	
 	/**
@@ -27,40 +29,19 @@ class BouteilleModel extends Modele {
 	 */
 	public function getUneBouteilleCellier($id_bouteille)
 	{
-		$requete ="SELECT 
-					bouteille_du_cellier.*,
-				 	bouteille_saq.*			
-				from cellier
-				INNER JOIN bouteille_du_cellier ON cellier.cel_id = bouteille_du_cellier.bdc_cel_id
-				INNER JOIN bouteille_saq on bouteille_du_cellier.bdc_bout_id = bouteille_saq.bout_id 
-				WHERE cellier.cel_uti_id = ?
-				AND bouteille_du_cellier.bdc_id";
-
-		return $this->database->fetchAll($requete, 1, $id_bouteille);
-		
+		return $this->database->fetchAll(
+			"SELECT 
+				bouteille_du_cellier.*,
+				bouteille_saq.*			
+			from cellier
+			INNER JOIN bouteille_du_cellier ON cellier.cel_id = bouteille_du_cellier.bdc_cel_id
+			INNER JOIN bouteille_saq on bouteille_du_cellier.bdc_bout_id = bouteille_saq.bout_id 
+			WHERE  %and ", [
+				'cellier.cel_uti_id' => $_SESSION['uti_id'],
+				'bouteille_du_cellier.bdc_id' => $id_bouteille
+			]);
 	}
 	
-	/**
-	 * Cette méthode permet de retourner les résultats de recherche pour la fonction d'autocomplete de l'ajout des bouteilles dans le cellier
-	 * 
-	 * @param string $nom La chaine de caractère à rechercher
-	 * @param integer $nb_resultat Le nombre de résultat maximal à retourner.
-	 * 
-	 * @throws Exception Erreur de requête sur la base de données 
-	 * 
-	 * @return array id et nom de la bouteille trouvée dans le catalogue
-	 */
-       
-	public function autocomplete($nom, $nb_resultat=10)
-	{
-		
-		$rows = Array();
-		$nom = $this->_db->real_escape_string($nom);
-		$nom = preg_replace("/\*/","%" , $nom);
-		 
-		$requete ='SELECT id, nom FROM vino__bouteille where LOWER(nom) like LOWER("%'. $nom .'%") LIMIT 0,'. $nb_resultat; 
-		return $this->database->fetchAll($requete);
-	}
 	
 	
 	/**
@@ -70,9 +51,9 @@ class BouteilleModel extends Modele {
 	 * 
 	 * @return Boolean Succès ou échec de l'ajout.
 	 */
-	public function ajouterBouteilleCellier($data)
+	public function insertion($data)
 	{
-		$this->database->query('INSERT INTO bouteille_du_cellier ? ', [ 
+		$this->database->query('INSERT INTO bouteille_du_cellier ', [ 
 			'bdc_cel_id' => $data['bdc_cel_id '],
 			'bdc_bout_id' => $data['bdc_bout_id'],
 			'bdc_date_achat' => $data['bdc_date_achat'],
@@ -85,9 +66,9 @@ class BouteilleModel extends Modele {
 		return $this->database->getInsertId();
 	}
 
-	public function modifierBouteilleCellier()
+	public function modifier()
 	{
-		$result = $this->database->query('UPDATE users SET', [
+		$result = $this->database->query('UPDATE bouteille_du_cellier SET', [
 			'bdc_bout_id' => $data['bdc_bout_id'],
 			'bdc_date_achat' => $data['bdc_date_achat'],
 			'bdc_garde_jusqua' => $data['bdc_garde_jusqua'],

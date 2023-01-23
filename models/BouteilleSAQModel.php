@@ -1,14 +1,14 @@
 <?php
 class BouteilleSAQModel extends Modele
 {
-       /**
+    /**
 	 * Requête SELECT de la liste de bouteilles SAQ
 	 *
 	 * @return array[] liste de bouteille SAQ 
 	 */
 	public function getListeBouteille()
 	{
-		return $this->database->fetchAll('SELECT * FROM bouteille');
+		return $this->database->fetchAll('SELECT * FROM bouteille_saq');
 	}
 
     public function addBouteilleSAQ($data) 
@@ -29,6 +29,28 @@ class BouteilleSAQModel extends Modele
         
         return $this->database->getInsertId(); 
     }
+
+    /**
+	 * Cette méthode permet de retourner les résultats de recherche pour la fonction d'autocomplete de l'ajout des bouteilles dans le cellier
+	 * 
+	 * @param string $nom La chaine de caractère à rechercher
+	 * @param integer $nb_resultat Le nombre de résultat maximal à retourner.
+	 * 
+	 * @throws Exception Erreur de requête sur la base de données 
+	 * 
+	 * @return array id et nom de la bouteille trouvée dans le catalogue
+	 */
+       
+	public function autocomplete($nom, $nb_resultat=10)
+	{
+		
+		$rows = Array();
+		/* $nom = $this->_db->real_escape_string($nom); */
+		$nom = preg_replace("/\*/","%" , $nom);
+		 
+		$requete ='SELECT id, nom FROM bouteille_saq where LOWER(nom) like LOWER("%'. $nom .'%") LIMIT 0,'. $nb_resultat; 
+		return $this->database->fetchAll($requete);
+	}
 
     
     /**

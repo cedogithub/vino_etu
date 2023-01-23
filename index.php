@@ -10,7 +10,6 @@ $router->get('/', 'Utilisateur@accueil');
 $router->get('/utilisateur/accueil', 'Utilisateur@accueil');
 $router->get('/utilisateur/inscription', 'Utilisateur@inscription');
 
-
 $router->post('/utilisateur/connexion', 'Utilisateur@connexion');
 $router->get('/utilisateur/deconnexion', 'Utilisateur@deconnexion');
 $router->post('/utilisateur/creation', 'Utilisateur@creation'); 
@@ -20,8 +19,9 @@ $router->post('/utilisateur/creation', 'Utilisateur@creation');
 $router->before('GET|POST', '/bouteille/.*', 'Bouteille@protection');
 
 $router->get('/bouteille/cellier', 'Bouteille@cellier');
-$router->get('/bouteille/nouveau', 'Bouteille@nouvelleBouteilleCellier');
-$router->post('/bouteille/ajouter', 'Bouteille@ajouterBouteilleCellier');
+$router->get('/bouteille/nouveau', 'Bouteille@nouveau');
+$router->get('/bouteille/insertion', 'Bouteille@insertion');
+
 $router->get('/bouteille/modifier/{id}', 'Bouteille@modificationBouteille');
 $router->post('/bouteille/quantite/boire/', 'Bouteille@boireQuantiteBouteille');
 $router->post('/bouteille/quantite/ajouter/', 'Bouteille@ajouterQuantiteBouteille');
