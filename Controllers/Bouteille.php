@@ -16,7 +16,10 @@ class Bouteille
      */
     public function cellier()
     {
-        $this->render('bouteille/cellier.html');
+        $bouteilles = (new BouteilleModel())->getBouteillesCellier();
+        $this->render('bouteille/cellier.html', [
+            'bouteilles' => $bouteilles
+        ]);
     }
 
         
