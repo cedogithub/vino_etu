@@ -20,7 +20,7 @@ $router->before('GET|POST', '/bouteille/.*', 'Bouteille@protection');
 
 $router->get('/bouteille/cellier', 'Bouteille@cellier');
 $router->get('/bouteille/nouveau', 'Bouteille@nouveau');
-$router->get('/bouteille/insertion', 'Bouteille@insertion');
+$router->post('/bouteille/insertion', 'Bouteille@insertion');
 
 $router->get('/bouteille/modifier/{id}', 'Bouteille@modificationBouteille');
 $router->post('/bouteille/quantite/boire/', 'Bouteille@boireQuantiteBouteille');
@@ -34,6 +34,6 @@ $router->run();
 }
 (new BouteilleSAQModel())->fetch_bottle_from_SAQ($i);
  */
-/* (new BouteilleSAQModel())->fetch_bottle_from_SAQ("1"); */
-
+/*  (new BouteilleSAQModel())->fetch_bottle_from_SAQ("1"); 
+ */
    

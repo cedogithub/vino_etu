@@ -11,12 +11,16 @@
 
 <section id="app-4" class="flex flex-wrap mt-10">
 
-<article class="w-full md:w-1/2 rounded-xl border-2 border-gray-100 bg-white" v-for="todo in todos">
+{% for bouteille in bouteilles %}
+
+<article class="w-full md:w-1/2 rounded-xl border-2 border-gray-100 bg-white" data-js-bouteille
+  data-js-id="{{bouteille.bdc_id}}">
+
 <div class="flex items-start p-6">
   <a href="#" class="block shrink-0">
     <img
       alt="Speaker"
-      src="/public/img/vin-1.webp"
+      src="{{bouteille.bout_image}}"
       class="h-18 w-14 rounded-lg object-cover"
     />
   </a>
@@ -24,13 +28,12 @@
   <div class="ml-4">
     <h3 class="font-medium text-xs md:text-sm">
       <a href="#" class="hover:underline">
-        Question about Livewire Rendering and Alpine JS
+        {{bouteille.bout_nom}}
       </a>
     </h3>
 
     <p class="text-xs text-gray-700 line-clamp-2">
-      Vin rouge   |   750 ml
-      France, Provence
+      {{bouteille.bout_description}}
     </p>
 
     <div class="mt-2 sm:flex sm:items-center sm:gap-2">
@@ -49,21 +52,24 @@
             d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
           />
         </svg>
-        <p class="ml-1 text-xs">14 bouteilles</p>
+        <p class="ml-1 text-xs"> <span data-js-quantite>{{bouteille.bdc_quantite}}</span>  bouteilles</p>
       </div>
 
       <span class="hidden sm:block" aria-hidden="true">&middot;</span>
 
       <p class="hidden sm:block sm:text-xs sm:text-gray-500">
-        Posted by
-        <a href="#" class="font-medium underline hover:text-gray-700">
-          John
+      <span data-js-ajouter>Ajouter</span>  
+        <a href="#" class="font-medium underline hover:text-gray-700" data-js-boire>
+          Boire 
         </a>
       </p>
     </div>
   </div>
 </div>
 </article>
+
+    
+{% endfor %}
 
 </section>
 
@@ -78,4 +84,6 @@
     }
 
   </style>
+  <script src="/public/js/Bouteille.js"></script>
+  <script src="/public/js/main.js"></script>
 {% endblock main %}
