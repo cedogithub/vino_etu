@@ -17,7 +17,7 @@ class UtilisateurModel extends Modele {
      */
     public function creerUsager($data){
             
-        $this->database->query('INSERT INTO utilisateur ?', [ 
+        $this->database->query('INSERT INTO utilisateur', [ 
 			'uti_courriel' => $data['uti_courriel'],
 			'uti_mdp' => password_hash($data['uti_mdp'], PASSWORD_DEFAULT),
 			'uti_nom' => $data['uti_nom'],

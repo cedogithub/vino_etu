@@ -10,10 +10,14 @@ class Modele {
 	 */
 	function __construct ()
 	{
-		$dsn = 'mysql:host='.HOST.';dbname='.DATABASE;
-		$user = USER;
-		$password = PASSWORD;
-		$this->database = new Nette\Database\Connection($dsn, $user, $password);
+		$this->database = new Dibi\Connection([
+			'driver'   => 'mysqli',
+			'host'     => HOST,
+			'username' => USER,
+			'password' => PASSWORD,
+			'database' => DATABASE,
+		]);
+	
 	}
 	
 }
