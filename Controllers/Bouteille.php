@@ -16,7 +16,7 @@ class Bouteille
      */
     public function cellier()
     {
-        $this->render('cellier/cellier.html');
+        $this->render('bouteille/cellier.html');
     }
 
         
@@ -25,9 +25,14 @@ class Bouteille
      *
      * @return void
      */
-    public function nouvelleBouteilleCellier()
+    public function nouveau()
     {
+        $this->render('bouteille/nouveau.html');
+    }
 
+    public function modification()
+    {
+        
     }
     
     /**
@@ -35,7 +40,7 @@ class Bouteille
      *
      * @return void
      */
-    public function ajouterBouteilleCellier()
+    public function insertion()
     {
         $bte = new BouteilleCellier();
         $cellier = $bte->ajouterBouteilleCellier($_POST);
@@ -82,10 +87,6 @@ class Bouteille
         echo json_encode($resultat);
     }
 
-
-   
-
-        
     /**
      * Affiche la page demandée
      *
