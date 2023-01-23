@@ -18,7 +18,6 @@ class BouteilleModel extends Modele {
 			WHERE cellier.cel_uti_id = ?",
 			$_SESSION['uti_id']
 		);
-	
 	}
 	
 	/**
@@ -54,13 +53,13 @@ class BouteilleModel extends Modele {
 	public function insertion($data)
 	{
 		$this->database->query('INSERT INTO bouteille_du_cellier ', [ 
-			'bdc_cel_id' => $data['bdc_cel_id '],
 			'bdc_bout_id' => $data['bdc_bout_id'],
 			'bdc_date_achat' => $data['bdc_date_achat'],
 			'bdc_garde_jusqua' => $data['bdc_garde_jusqua'],
 			'bdc_notes' => $data['bdc_notes'],
 			'bdc_quantite' => $data['bdc_quantite'],
-			'bdc_millesime' => $data['bdc_millesime']
+			'bdc_millesime' => $data['bdc_millesime'],
+			'bdc_cel_id' => '10'
 		]);
         
 		return $this->database->getInsertId();
@@ -91,7 +90,7 @@ class BouteilleModel extends Modele {
 	 */
 	public function modifierQuantiteBouteilleCellier($id, $nombre)
 	{
-		$requete = "UPDATE bouteille_du_cellier SET bdc_quantite = GREATEST(bdc_quantite + ". $nombre. ", 0) WHERE id = ". $id;
+		$requete = "UPDATE bouteille_du_cellier SET bdc_quantite = GREATEST(bdc_quantite + ". $nombre. ", 0) WHERE bdc_id = ". $id;
         $res = $this->database->query($requete);
 		return $res->getRowCount();
 	}
