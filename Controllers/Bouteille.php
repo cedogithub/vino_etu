@@ -17,6 +17,7 @@ class Bouteille
     public function cellier()
     {
         $bouteilles = (new BouteilleModel())->getBouteillesCellier();
+        // à supprimer
         $this->render('bouteille/cellier.html', [
             'bouteilles' => $bouteilles
         ]);
@@ -29,8 +30,11 @@ class Bouteille
      * @return void
      */
     public function nouveau()
-    {
-        $this->render('bouteille/nouveau.html');
+    {  
+        $bouteillesSAQ = (new BouteilleSAQModel())->getListeBouteille();
+        $this->render('bouteille/nouveau.html',[
+            'bouteillesSAQ' => $bouteillesSAQ
+        ]);
     }
 
     public function modification()
@@ -45,9 +49,9 @@ class Bouteille
      */
     public function insertion()
     {
-        $bte = new BouteilleCellier();
-        $cellier = $bte->ajouterBouteilleCellier($_POST);
-        header("Location: /accueil");
+        $bte = new BouteilleModel();
+        $cellier = $bte->insertion($_POST);
+        header("Location: /bouteille/cellier");
         exit();
     }
     
@@ -77,7 +81,7 @@ class Bouteille
     
     public function ajouterQuantiteBouteille() {
         $body = json_decode(file_get_contents('php://input'));
-        $bte = new BouteilleCellier();
+        $bte = new BouteilleModel();
 		$resultat = $bte->modifierQuantiteBouteilleCellier($body->id, 1);
         echo json_encode($resultat);
     }
@@ -85,7 +89,7 @@ class Bouteille
 
     public function boireQuantiteBouteille() {
         $body = json_decode(file_get_contents('php://input'));
-        $bte = new BouteilleCellier();
+        $bte = new BouteilleModel();
 		$resultat = $bte->modifierQuantiteBouteilleCellier($body->id, -1);
         echo json_encode($resultat);
     }
