@@ -5,5 +5,5 @@
 	define('HOST', 'localhost');
 	define('USER', 'root');
 	define('PASSWORD', 'kenneth');
-	define('DATABASE', 'vino');
+	define('DATABASE', 'vino_web');
 ?>
