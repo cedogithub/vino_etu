@@ -25,7 +25,7 @@ class UtilisateurModel extends Modele {
 			'uti_rol_id' => '1'
         ]);
  
-      
+        return $this->database->getInsertId();
     }
     
  
