@@ -15,7 +15,11 @@ class Utilisateur
     public function creation()
     {
         $user = new UtilisateurModel();
-        $user->creerUsager($_POST);
+        $id_utilisateur = $user->creerUsager($_POST);
+
+        // créatiom du cellier
+        (new CellierModel())->insertion($id_utilisateur);
+        
         header("Location: /utilisateur/accueil"); 
         exit();
     }

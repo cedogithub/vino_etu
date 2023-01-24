@@ -59,7 +59,7 @@ class BouteilleModel extends Modele {
 			'bdc_notes' => $data['bdc_notes'],
 			'bdc_quantite' => $data['bdc_quantite'],
 			'bdc_millesime' => $data['bdc_millesime'],
-			'bdc_cel_id' => '10'
+			'bdc_cel_id' => $data['bdc_cel_id']
 		]);
         
 		return $this->database->getInsertId();

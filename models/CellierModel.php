@@ -10,15 +10,11 @@ class CellierModel extends Modele {
     public function insertion($id_utilisateur)
     {
         $this->database->query('INSERT INTO cellier ', [ 
-            'cel_id	' => '',
             'cel_nom' => "Cellier # $id_utilisateur",
             'cel_uti_id' => $id_utilisateur
-           
         ]);
         
         return $this->database->getInsertId(); 
-
-        
     }
     
     /**
@@ -29,7 +25,7 @@ class CellierModel extends Modele {
      */
     public function getCellier($id_utilisateur)
     {
-        
+        return $this->database->fetch('SELECT * FROM cellier WHERE cel_uti_id  = ?', $id_utilisateur);
     }
 }
 
