@@ -28,10 +28,7 @@ class Utilisateur
              (new CellierModel())->insertion($id_utilisateur);
              header("Location: /utilisateur/accueil"); 
              exit();
-
         } else {
-            echo 'courriel existe deja je vais implimenter lerreur dans twig ;)';
-            die();
             $this->render('utilisateur/inscription.html', [
                 "erreur" => 'Ce courriel est deja utilisé'
             ]); 
