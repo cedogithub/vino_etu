@@ -20,7 +20,7 @@
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                         bouteille
                       </label>
-                      <select name="bdc_bout_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="bouteille">
+                      <select name="bdc_bout_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" required placeholder="bouteille">
 
                         {% for bouteille in bouteillesSAQ %}
                             <option value="{{bouteille.bout_id}}">{{bouteille.bout_nom}}</option>
@@ -31,7 +31,7 @@
                   <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                    Quantite
                   </label>
-                  <input name="bdc_quantite" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="number" placeholder="Quantite">
+                  <input name="bdc_quantite" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" required type="number" placeholder="Quantite">
                 </div>
                 <div class="mb-4">
                   <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
@@ -44,13 +44,13 @@
                   <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
                       Millesime
                   </label>
-                  <input name="bdc_millesime" class="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="number" placeholder="Millesime">
+                  <input name="bdc_millesime" class="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="number" placeholder="Millesime" required>
                 </div>
                 <div class="mb-4">
                   <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                       Garder jusqu'à
                   </label>
-                  <input name="bdc_garde_jusqua" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="datetime-local" placeholder="garde_jusqua">
+                  <input name="bdc_garde_jusqua" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" required type="datetime-local" placeholder="garde_jusqua">
                 </div>
                 <div class="mt-9 flex items-center justify-between">
                   <button class="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
