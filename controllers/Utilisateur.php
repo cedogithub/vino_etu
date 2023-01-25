@@ -11,7 +11,12 @@ class Utilisateur
         $this->render('utilisateur/inscription.html');  
     }
 
-
+    
+    /**
+     * creation du compte et du cellier de l'utilisateur
+     *
+     * @return void
+     */
     public function creation()
     {
         $model = new UtilisateurModel();
@@ -19,9 +24,7 @@ class Utilisateur
         // confirmer si courriel existe deja 
         $possibleUser = $model->getUsager($_POST['uti_courriel']);
         if (! isset($possibleUser)) {
-             // création du compte
              $id_utilisateur = $model->creerUsager($_POST);
-             // création automatique du cellier
              (new CellierModel())->insertion($id_utilisateur);
              header("Location: /utilisateur/accueil"); 
              exit();

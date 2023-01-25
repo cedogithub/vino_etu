@@ -98,6 +98,15 @@ class Bouteille
         echo json_encode($resultat);
     }
 
+
+    public function apiSelect()
+    {
+        $bte = new Bouteille();
+        $body = json_decode(file_get_contents('php://input'));
+        $listeBouteille = (new BouteilleSAQModel())->autocomplete($body->nom);
+        echo json_encode($listeBouteille);
+    }
+
     /**
      * Affiche la page demandée
      *
