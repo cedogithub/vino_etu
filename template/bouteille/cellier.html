@@ -9,14 +9,14 @@
 </article>
 
 
-<section id="app-4" class="flex flex-wrap mt-10">
+<section id="app-4" class="flex flex-wrap mt-10 section">
 
 {% for bouteille in bouteilles %}
 
 <article class="w-full md:w-1/2 rounded-xl border-2 border-gray-100 bg-white" data-js-bouteille
   data-js-id="{{bouteille.bdc_id}}">
 
-<div class="flex items-start p-6">
+<div class="flex items-center p-6">
   <a href="#" class="block shrink-0">
     <img
       alt="Speaker"
@@ -76,7 +76,7 @@
 
   <style>
     @media (min-width: 800px) {
-      section {
+      .section {
         max-width: clamp(0px, 80vw, 1200px);
         margin-left: auto;
         margin-right: auto;

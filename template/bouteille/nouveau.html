@@ -3,10 +3,10 @@
 {% block main %}
 
   <header>
-    <img class="max-h-72  md:max-h-60 w-full object-cover" src="/public/img/drizzle_bg_2.jpg" alt="">
+    <img class="max-h-24 md:max-h-52 w-full object-cover" src="/public/img/drizzle_bg_2.jpg" alt="">
   </header>
   
-  <section class="pb-8">
+  <section class="pb-8 section">
       <article class="flex justify-center items-center">
           <div class="w-full max-w-md pt-6 md:pt-12">
               <form method="POST" action="/bouteille/insertion" class="bg-white shadow-md rounded px-8 pt-6  pb-8 mb-4">
@@ -68,14 +68,14 @@
   
 
 <style>
-section {
+.section {
     max-width: 90vw;
     margin-left: auto;
     margin-right: auto;
 }
 
 @media (min-width: 800px) {
-    section {
+    .section {
         max-width: clamp(0px, 80vw, 1000px);
         margin-left: auto;
         margin-right: auto;
