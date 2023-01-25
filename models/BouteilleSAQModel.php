@@ -48,7 +48,7 @@ class BouteilleSAQModel extends Modele
 		/* $nom = $this->_db->real_escape_string($nom); */
 		$nom = preg_replace("/\*/","%" , $nom);
 		 
-		$requete ='SELECT id, nom FROM bouteille_saq where LOWER(nom) like LOWER("%'. $nom .'%") LIMIT 0,'. $nb_resultat; 
+		$requete ='SELECT bout_id , bout_nom FROM bouteille_saq where LOWER(bout_nom) like LOWER("%'. $nom .'%") LIMIT 0,'. $nb_resultat; 
 		return $this->database->fetchAll($requete);
 	}
 
