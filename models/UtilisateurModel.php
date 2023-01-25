@@ -4,7 +4,7 @@
 class UtilisateurModel extends Modele {
 
     /**
-     * Cette methode sert a afficher tout les utilisateur de la BD
+     * Cette methode sert a selectionner un utilisateur de la BD
      */
     public function getUsager($courriel){
         $result = $this->database->fetch("SELECT * FROM utilisateur WHERE uti_courriel = '$courriel'");
@@ -27,7 +27,6 @@ class UtilisateurModel extends Modele {
  
         return $this->database->getInsertId();
     }
-    
  
 
 }

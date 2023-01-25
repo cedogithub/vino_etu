@@ -14,14 +14,24 @@ class Utilisateur
 
     public function creation()
     {
-        $user = new UtilisateurModel();
-        $id_utilisateur = $user->creerUsager($_POST);
-
-        // créatiom du cellier
-        (new CellierModel())->insertion($id_utilisateur);
+        $model = new UtilisateurModel();
         
-        header("Location: /utilisateur/accueil"); 
-        exit();
+        // confirmer si courriel existe deja 
+        $possibleUser = $model->getUsager($_POST['uti_courriel']);
+        if (isset($possibleUser)) {
+            echo 'courriel existe deja je vais implimenter lerreur dans twig ;)';
+            die();
+            $this->render('utilisateur/inscription.html', [
+                "erreur" => 'Ce courriel est deja utilisé'
+            ]); 
+        } else {
+            // création du compte
+            $id_utilisateur = $model->creerUsager($_POST);
+            // création automatique du cellier
+            (new CellierModel())->insertion($id_utilisateur);
+            header("Location: /utilisateur/accueil"); 
+            exit();
+        }  
     }
 
     /**
