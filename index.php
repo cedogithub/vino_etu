@@ -29,6 +29,8 @@ $router->post('/bouteille/quantite/ajouter/', 'Bouteille@ajouterQuantiteBouteill
 $router->post('/bouteille/api/select', 'Bouteille@apiSelect');
 
 
+$router->get('/bouteille/detail/{id}', 'Bouteille@detailBouteille');
+
 $router->run();
 
 
