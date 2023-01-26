@@ -65,21 +65,18 @@ class Bouteille
      * @param  mixed $id_bouteille id de la bouteille
      * @return void
      */
-    public function modificationBouteille($id_bouteille)
+    public function detailBouteille($id_bouteille)
     {
-        $bte = new BouteilleCellier();
-        $listeBouteille = $bte->getListeBouteille();
-
-        $data = $bte->getUneBouteilleCellier($id_bouteille);
-        // Vérification si id existe
-        if ( ! $data) {
-            header("Location: /accueil");
-            exit();
-        } else {  
-            include("vues/entete.php");
-            include("vues/modifier.php");
-            include("vues/pied.php");
-        }
+        $model = new BouteilleModel();
+        $result = $model->getUneBouteilleCellier($id_bouteille);
+        echo '<pre>';
+        print_r($result);
+        echo '</pre>';
+        
+        $this->render('bouteille/detail.html',[
+            'resultatDetail' => $result
+            
+        ]);
     }
 
     
