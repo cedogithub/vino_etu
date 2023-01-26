@@ -1,7 +1,8 @@
 <?php
-session_start();
 require_once __DIR__. '/dataconf.model.php';
 require __DIR__ . '/vendor/autoload.php';
+session_start();
+
 // Create Router instance
 $router = new \Bramus\Router\Router();
 
@@ -22,7 +23,6 @@ $router->get('/bouteille/cellier', 'Bouteille@cellier');
 $router->get('/bouteille/nouveau', 'Bouteille@nouveau');
 $router->post('/bouteille/insertion', 'Bouteille@insertion');
 
-$router->get('/bouteille/modifier/{id}', 'Bouteille@modificationBouteille');
 $router->post('/bouteille/quantite/boire/', 'Bouteille@boireQuantiteBouteille');
 $router->post('/bouteille/quantite/ajouter/', 'Bouteille@ajouterQuantiteBouteille');
 
@@ -30,6 +30,7 @@ $router->post('/bouteille/api/select', 'Bouteille@apiSelect');
 
 
 $router->get('/bouteille/detail/{id}', 'Bouteille@detailBouteille');
+$router->post('/bouteille/modifier', 'Bouteille@modifierBouteille');
 
 $router->run();
 

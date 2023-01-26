@@ -28,7 +28,7 @@ class BouteilleModel extends Modele {
 	 */
 	public function getUneBouteilleCellier($id_bouteille)
 	{
-		return $this->database->fetchAll(
+		return $this->database->fetch(
 			"SELECT 
 				bouteille_du_cellier.*,
 				bouteille_saq.*			
@@ -64,19 +64,25 @@ class BouteilleModel extends Modele {
         
 		return $this->database->getInsertId();
 	}
-
-	public function modifier()
+	
+		
+	/**
+	 * Requete UPDATE d'une bouteille
+	 *
+	 * @param  mixed $data Tableau des données représentants la bouteille.
+	 * @return void
+	 */
+	public function modifierBouteille($data)
 	{
-		$result = $this->database->query('UPDATE bouteille_du_cellier SET', [
-			'bdc_bout_id' => $data['bdc_bout_id'],
+		$this->database->query('UPDATE bouteille_du_cellier SET', [
 			'bdc_date_achat' => $data['bdc_date_achat'],
 			'bdc_garde_jusqua' => $data['bdc_garde_jusqua'],
 			'bdc_notes' => $data['bdc_notes'],
 			'bdc_quantite' => $data['bdc_quantite'],
 			'bdc_millesime' => $data['bdc_millesime']
-		], 'WHERE bdc_cel_id = ?', $data['bdc_cel_id']);
+		], 'WHERE bdc_id = ?', $data['bdc_id']);
 
-		$result->getRowCount();
+		return $this->database->getAffectedRows();
 	}
 	
 	

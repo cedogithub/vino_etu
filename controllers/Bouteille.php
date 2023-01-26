@@ -17,8 +17,6 @@ class Bouteille
     public function cellier()
     {
         $bouteilles = (new BouteilleModel())->getBouteillesCellier();
-
-     
         $this->render('bouteille/cellier.html', [
             'bouteilles' => $bouteilles
         ]);
@@ -41,10 +39,7 @@ class Bouteille
         ]);
     }
 
-    public function modification()
-    {
-        
-    }
+  
     
     /**
      * Gère la requête INSERT de bouteille
@@ -69,14 +64,18 @@ class Bouteille
     {
         $model = new BouteilleModel();
         $result = $model->getUneBouteilleCellier($id_bouteille);
-        echo '<pre>';
-        print_r($result);
-        echo '</pre>';
-        
+        $result['bdc_date_achat'] = str_replace('.000000', '', $result['bdc_date_achat']);
         $this->render('bouteille/detail.html',[
             'resultatDetail' => $result
             
         ]);
+    }
+
+    public function modifierBouteille()
+    {
+        (new BouteilleModel())->modifierBouteille($_POST);
+        header("Location: /bouteille/cellier");
+        exit();
     }
 
     
@@ -115,9 +114,11 @@ class Bouteille
     {
         $loader = new \Twig\Loader\FilesystemLoader(dirname(__DIR__) . '/template');
         $twig = new \Twig\Environment($loader, [
+            'debug' => true,
             'cache' => false
         ]);
         $twig->addGlobal('session', $_SESSION);
+        $twig->addExtension(new \Twig\Extension\DebugExtension());
         echo $twig->render($file_name , $data);
     }
 }
