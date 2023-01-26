@@ -2,32 +2,25 @@
 
 {% block main %}
 
-<article class="bg-white">
-  <div class="">
-    <img class='max-h-28 md:max-h-52 w-full object-cover' src="/public/img/drizzle_bg_2.jpg" alt="">
-  </div>
-</article>
-
-
 <section id="app-4" class="flex flex-wrap mt-10 section">
 
 {% for bouteille in bouteilles %}
+<article class="w-full md:w-1/2 rounded-xl border-2 border-gray-100 bg-white flex items-center p-6"
+   data-js-bouteille
+  data-js-id="{{bouteille.bdc_id}}"
+  @click="">
 
-<a href="/bouteille/detail/{{bouteille.bdc_id}}">
-<article class="w-full md:w-1/2 rounded-xl border-2 border-gray-100 bg-white" data-js-bouteille
-  data-js-id="{{bouteille.bdc_id}}">
-<div class="flex items-center p-6">
-  <a href="#" class="block shrink-0">
+  <div href="#" class="block shrink-0">
     <img
       alt="Speaker"
       src="{{bouteille.bout_image}}"
       class="h-18 w-14 rounded-lg object-cover"
     />
-  </a>
+  </div>
 
   <div class="ml-4">
     <h3 class="font-medium text-xs md:text-sm">
-      <a href="#" class="hover:underline">
+      <a href="/bouteille/detail/{{bouteille.bdc_id}}" class="hover:underline">
         {{bouteille.bout_nom}}
       </a>
     </h3>
@@ -59,22 +52,55 @@
 
       <p class="hidden sm:block sm:text-xs sm:text-gray-500">
       <span data-js-ajouter>Ajouter</span>  
-        <a href="#" class="font-medium underline hover:text-gray-700" data-js-boire>
+        <span href="#" class="font-medium underline hover:text-gray-700" data-js-boire>
           Boire 
-        </a>
+        </span>
       </p>
     </div>
   </div>
-</div>
 </article>
-</a>
 
-    
 {% endfor %}
 
 </section>
 
 
+{# message pour bouteilles vides #}
+{% if bouteilles is empty %}
+<section
+class="overflow-hidden sm:grid sm:grid-cols-2 sm:items-center section"
+>
+<div class="p-8 md:p-12 lg:px-16 lg:py-24">
+  <div class="mx-auto max-w-xl text-center sm:text-left">
+    <h2 class="text-2xl font-bold text-gray-900 md:text-3xl">
+      Bienvenue sur Vino, <br> Ajouter votre première bouteille.
+    </h2>
+
+    <p class="hidden text-gray-500 md:mt-4 md:block">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et, egestas
+      tempus tellus etiam sed. Quam a scelerisque amet ullamcorper eu enim et
+      fermentum, augue. Aliquet amet volutpat quisque ut interdum tincidunt
+      duis.
+    </p>
+
+    <div class="mt-4 md:mt-8">
+      <a
+        href="#"
+        class="inline-block rounded bg-emerald-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-emerald-700 focus:outline-none focus:ring focus:ring-yellow-400"
+      >
+        Commencer
+      </a>
+    </div>
+  </div>
+</div>
+
+<img
+  alt="Violin"
+  src="/public/img/drizzle_bg_2.jpg"
+  class=" hidden sm:block mt-9 sm:mt-0 h-full w-full object-cover sm:h-[calc(100%_-_2rem)] sm:self-end sm:rounded-tl-[30px] md:h-[calc(100%_-_4rem)] md:rounded-tl-[60px]"
+/>
+</section>
+{% endif %}
   <style>
     @media (min-width: 800px) {
       .section {
