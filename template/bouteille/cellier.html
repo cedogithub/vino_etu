@@ -13,9 +13,9 @@
 
 {% for bouteille in bouteilles %}
 
+<a href="/bouteille/detail/{{bouteille.bdc_id}}">
 <article class="w-full md:w-1/2 rounded-xl border-2 border-gray-100 bg-white" data-js-bouteille
   data-js-id="{{bouteille.bdc_id}}">
-
 <div class="flex items-center p-6">
   <a href="#" class="block shrink-0">
     <img
@@ -67,6 +67,7 @@
   </div>
 </div>
 </article>
+</a>
 
     
 {% endfor %}
