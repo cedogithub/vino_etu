@@ -16,9 +16,11 @@ class Bouteille
      */
     public function cellier()
     {
+      
         $bouteilles = (new BouteilleModel())->getBouteillesCellier();
         $this->render('bouteille/cellier.html', [
-            'bouteilles' => $bouteilles
+            'bouteilles' => $bouteilles,
+            'message' => $_GET['message'] ?? 'ouii'
         ]);
     }
 
@@ -50,7 +52,7 @@ class Bouteille
     {
         $bte = new BouteilleModel();
         $cellier = $bte->insertion($_POST);
-        header("Location: /bouteille/cellier");
+        header("Location: /bouteille/cellier?message=ajouter");
         exit();
     }
     
@@ -74,7 +76,7 @@ class Bouteille
     public function modifierBouteille()
     {
         (new BouteilleModel())->modifierBouteille($_POST);
-        header("Location: /bouteille/cellier");
+        header("Location: /bouteille/cellier?message=modifier");
         exit();
     }
 
