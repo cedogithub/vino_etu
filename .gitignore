@@ -25,6 +25,4 @@ dataconf.php
 
 node_modules
 package*
-tailwind.conf*
 tailwind-comm*
-tailwind-conf*

@@ -41,10 +41,7 @@ class Bouteille
         ]);
     }
 
-    public function modification()
-    {
-        
-    }
+  
     
     /**
      * Gère la requête INSERT de bouteille
@@ -69,14 +66,18 @@ class Bouteille
     {
         $model = new BouteilleModel();
         $result = $model->getUneBouteilleCellier($id_bouteille);
-        echo '<pre>';
-        print_r($result);
-        echo '</pre>';
-        
+        $result['bdc_date_achat'] = str_replace('.000000', '', $result['bdc_date_achat']);
         $this->render('bouteille/detail.html',[
             'resultatDetail' => $result
             
         ]);
+    }
+
+    public function modifierBouteille()
+    {
+        (new BouteilleModel())->modifierBouteille($_POST);
+        header("Location: /bouteille/cellier");
+        exit();
     }
 
     
