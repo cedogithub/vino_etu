@@ -100,6 +100,32 @@ class BouteilleModel extends Modele {
         $res = $this->database->query($requete);
 		return $res->getRowCount();
 	}
+	
+		
+	/**
+	 * récupère l'ID d'une bouteille par son nom
+	 *
+	 * @param  mixed $nom_bouteille - nom de la bouteille
+	 * @return int - L'id de la bouteille
+	 */
+	public function getIdByName($nom_bouteille)
+	{
+		$bouteille = $this->database->fetch(
+			"SELECT bout_id FROM bouteille_saq WHERE bout_nom = ?",
+			$nom_bouteille
+		);
+		
+		return $bouteille;
+	}
+
+	public function supprimer($id_bouteille)
+	{
+		$this->database->query('DELETE FROM bouteille_du_cellier WHERE bdc_id = ?', $id_bouteille);
+		return $this->database->getAffectedRows();
+	}
+
+
+
 }
 
 

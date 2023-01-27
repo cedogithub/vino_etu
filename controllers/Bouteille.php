@@ -42,15 +42,18 @@ class Bouteille
     }
 
   
-    
     /**
      * Gère la requête INSERT de bouteille
      *
      * @return void
      */
     public function insertion()
-    {
+    { 
         $bte = new BouteilleModel();
+        /* Récupère l'id de la bouteille par son nom */
+        $id_bouteille = $bte->getIdByName($_POST['nom_bouteille_saq'])['bout_id'] ?? '11';
+        $_POST['bdc_bout_id'] = $id_bouteille;
+       
         $cellier = $bte->insertion($_POST);
         header("Location: /bouteille/cellier?message=ajouter");
         exit();
@@ -68,8 +71,7 @@ class Bouteille
         $result = $model->getUneBouteilleCellier($id_bouteille);
         $result['bdc_date_achat'] = str_replace('.000000', '', $result['bdc_date_achat']);
         $this->render('bouteille/detail.html',[
-            'resultatDetail' => $result
-            
+            'resultatDetail' => $result   
         ]);
     }
 
@@ -103,6 +105,13 @@ class Bouteille
         $body = json_decode(file_get_contents('php://input'));
         $listeBouteille = (new BouteilleSAQModel())->autocomplete($body->nom);
         echo json_encode($listeBouteille);
+    }
+
+    public function supprimer($id_bouteille)
+    {
+        (new BouteilleModel())->supprimer($id_bouteille);
+        header("Location: /bouteille/cellier?message=supprimer");
+        exit();
     }
 
     /**
