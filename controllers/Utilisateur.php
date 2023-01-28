@@ -13,11 +13,7 @@ class Utilisateur
         ]);
 
     }
-    public function admin()
-    {  
-        $this->render('utilisateur/admin.html');
-    }
-    
+
     public function inscription()
     {  
         if (isset($_SESSION['utilisateur'])) {
