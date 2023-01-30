@@ -1,2 +1,14 @@
+{% extends "bouteille/base.html" %}
+
+{% block main %}
+
 <h1>Admin</h1>
 <h1>dashboard</h1>
+
+{% for nombre in nombreUti %}
+
+Nombre de utilisateur: {{nombre}}
+
+{% endfor %}
+
+{% endblock main %}
