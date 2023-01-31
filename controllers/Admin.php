@@ -7,10 +7,13 @@ class Admin
 
      public function dashboard(){
         $model = new AdminModele();
-        $nombreUti = $model-> getNombreUsagers();
+        $usagers = $model-> getNombreUsagers();
+        $celliers = $model-> getNombreUsagers();
+        
 
         $this->render('admin/dashboard.html', [
-            'nombreUti' => $nombreUti
+            'usagers' => $usagers,
+            'celliers' => $celliers
         ]);
      }
 
