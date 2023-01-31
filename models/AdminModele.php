@@ -12,15 +12,15 @@ class AdminModele extends Modele {
 
     
     public function getNombreUsagers(){
-        $result = $this->database->fetch("SELECT COUNT(*)
+        $result = $this->database->fetch("SELECT COUNT(*) as nbUsager
         FROM utilisateur;");
-        return $result;
+        return $result['nbUsager'];
     }
     
     public function getNombreCelliers(){
-        $result = $this->database->fetch("SELECT COUNT(*)
+        $result = $this->database->fetch("SELECT COUNT(*) as nbCelliers
         FROM cellier;");
-        return $result;
+        return $result['nbCelliers'];
     }
 
 
@@ -37,12 +37,12 @@ class AdminModele extends Modele {
 
         }
         return $cellier;
-
-
     }
-
-
-
+    public function findBouteilleParUsers(){
+            return $this->database->fetchAll("SELECT COUNT(bouteille_du_cellier.bdc_bout_id) as nbBouteille, cellier.cel_id FROM `cellier` JOIN bouteille_du_cellier on cellier.cel_id = bouteille_du_cellier.bdc_cel_id group by cellier.cel_id;");
+        
+    
+    }
 
 
 }
