@@ -16,6 +16,12 @@ class AdminModele extends Modele {
         FROM utilisateur;");
         return $result;
     }
+    
+    public function getNombreCelliers(){
+        $result = $this->database->fetch("SELECT COUNT(*)
+        FROM cellier;");
+        return $result;
+    }
 
 
 
