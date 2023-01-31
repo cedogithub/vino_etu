@@ -36,8 +36,10 @@ class Bouteille
 
     public function recherche()
     {
+        $recherche = $_POST['recherche'];
         $model = new BouteilleModel();
-        $resultat = $model->rechercheNom('19');
+        print_r($recherche);
+        $resultat = $model->rechercheNom($recherche);
         $this->render('bouteille/cellier.html', [
             'bouteilles' => $resultat
         ]);
