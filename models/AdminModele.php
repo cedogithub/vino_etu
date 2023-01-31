@@ -24,6 +24,24 @@ class AdminModele extends Modele {
     }
 
 
+    public function findNbParCelliers($id){
+        $result = $this->database->fetch("SELECT COUNT(*) as nb
+        FROM bouteille_du_cellier WHERE bdc_cel_id = '$id';");
+        return $result;
+    }
+    public function getNbParCelliers(){
+        $cellier = $this->database->fetchAll("SELECT *
+        FROM cellier");
+        foreach( $cellier as $key => $value ){
+            $value['nombreBouteille'] = $this->findNbParCelliers($value['cel_id'])['nb'];
+
+        }
+        return $cellier;
+
+
+    }
+
+
 
 
 
