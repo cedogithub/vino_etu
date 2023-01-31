@@ -9,11 +9,13 @@ class Admin
         $model = new AdminModele();
         $usagers = $model-> getNombreUsagers();
         $celliers = $model-> getNombreUsagers();
+        $NbCellier = $model-> getNbParCelliers();
         
-
         $this->render('admin/dashboard.html', [
             'usagers' => $usagers,
-            'celliers' => $celliers
+            'celliers' => $celliers,
+            'NbCellier' =>$NbCellier
+
         ]);
      }
 
