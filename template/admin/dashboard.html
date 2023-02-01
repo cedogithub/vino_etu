@@ -57,14 +57,14 @@
                     Utilisateurs
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    Role
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Nom du Cellier
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Bouteilles dans cellier
                 </th>
-                <!-- <th scope="col" class="px-6 py-3">
-                    Action
-                </th> -->
             </tr>
         </thead>
         
@@ -74,7 +74,7 @@
             <tr class="bg-white border-b ">
                 <td class="w-4 p-4">
                     <div class="flex items-center">
-                       
+                        
                     </div>
                 </td>
                 <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap ">
@@ -85,6 +85,18 @@
                         </div>
                     </div>  
                 </th>
+                <td class="px-6 py-4">
+                    <div class="flex items-center">
+                        
+                        {% if bouteille.uti_rol_id == 2 %}
+                        Admin
+                        {% else %}
+                        Membre
+
+                    {% endif %}
+    
+                    </div>
+                </td>
                 <td class="px-6 py-4">
                     {{bouteille.cel_nom}}
                 </td>
