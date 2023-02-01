@@ -8,13 +8,17 @@ class Admin
      public function dashboard(){
         $model = new AdminModele();
         $usagers = $model-> getNombreUsagers();
-        $celliers = $model-> getNombreUsagers();
+        $celliers = $model-> getNombreCelliers();
         $NbCellier = $model-> getNbParCelliers();
-        
+        $findBouteilleParUsers = $model-> findBouteilleParUsers();
+        $bouteille24h = $model-> getNbBouteille24h();
+
         $this->render('admin/dashboard.html', [
             'usagers' => $usagers,
             'celliers' => $celliers,
-            'NbCellier' =>$NbCellier
+            'NbCellier' =>$NbCellier,
+            'findBouteilleParUsers' =>$findBouteilleParUsers,
+            'bouteille24h' => $bouteille24h
 
         ]);
      }
