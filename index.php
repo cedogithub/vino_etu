@@ -15,7 +15,8 @@ $router->post('/utilisateur/connexion', 'Utilisateur@connexion');
 $router->get('/utilisateur/deconnexion', 'Utilisateur@deconnexion');
 $router->post('/utilisateur/creation', 'Utilisateur@creation'); 
 
-$router->get('/admin/dashboard', 'Admin@admin');
+$router->get('/admin/dashboard', 'Admin@dashboard');
+$router->get('/admin/connexion', 'Admin@admin');
 
 /* route s'assurant que l'usager soit authentifié */
 $router->before('GET|POST', '/bouteille/.*', 'Bouteille@protection');
