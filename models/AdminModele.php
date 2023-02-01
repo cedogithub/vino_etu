@@ -49,17 +49,21 @@ class AdminModele extends Modele {
      * Affiche le nombre de bouteille ajouter par l'usager et son cellier
      */
     public function findBouteilleParUsers(){
-        return $this->database->fetchAll("SELECT COUNT(bouteille_du_cellier.bdc_bout_id) as nbBouteille,cellier.cel_nom,utilisateur.uti_courriel FROM `cellier` JOIN bouteille_du_cellier on cellier.cel_id = bouteille_du_cellier.bdc_cel_id join utilisateur on cellier.cel_uti_id = utilisateur.uti_id group by utilisateur.uti_courriel;
+        $result = $this->database->fetchAll("SELECT COUNT(bouteille_du_cellier.bdc_bout_id) as nbBouteille,cellier.cel_nom,utilisateur.uti_courriel FROM `cellier` JOIN bouteille_du_cellier on cellier.cel_id = bouteille_du_cellier.bdc_cel_id join utilisateur on cellier.cel_uti_id = utilisateur.uti_id group by utilisateur.uti_courriel;
         ");
-        
-    }
+        // foreach($result as $row => $value) {
+        //     print_r($row);
+        //     print_r($value['']);
 
+        // }
+    return $result  ;
+    }
     /**
      * Affiche le nombre de bouteilles ajouter il ya 24h
      */
     public function getNbBouteille24h(){
-        $result = $this->database->fetch("SELECT COUNT(*) FROM bouteille_du_cellier WHERE bdc_date_achat > DATE_SUB(NOW(), INTERVAL 24 HOUR)");
-        return $result;
+        $result = $this->database->fetch("SELECT COUNT(*) as nb24 FROM bouteille_du_cellier WHERE bdc_date_achat > DATE_SUB(NOW(), INTERVAL 24 HOUR)");
+        return $result['nb24'];
     }
 }
 
