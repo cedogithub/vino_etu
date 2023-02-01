@@ -16,6 +16,15 @@ class Bouteille
      */
     public function cellier()
     {
+       /*  $model = new BouteilleModel();
+         $resultat = $model->rechercheNom('19');
+        
+       echo '<pre>';
+       print_r($resultat);
+       echo '</pre>'; */
+
+
+
       
         $bouteilles = (new BouteilleModel())->getBouteillesCellier();
         $this->render('bouteille/cellier.html', [
@@ -24,6 +33,18 @@ class Bouteille
         ]);
     }
 
+
+    public function recherche()
+    {
+        $recherche = $_POST['recherche'];
+        $model = new BouteilleModel();
+        print_r($recherche);
+        $resultat = $model->rechercheNom($recherche);
+        $this->render('bouteille/cellier.html', [
+            'bouteilles' => $resultat
+        ]);
+
+    }
         
     /**
      * Affiche la page d'ajout de bouteille

@@ -33,8 +33,10 @@ $router->post('/bouteille/api/select', 'Bouteille@apiSelect');
 $router->get('/bouteille/detail/{id}', 'Bouteille@detailBouteille');
 $router->post('/bouteille/modifier', 'Bouteille@modifierBouteille');
 
+
 $router->get('/bouteille/supprimer/{id}', 'Bouteille@supprimer');
 
+$router->post('/bouteille/recherche', 'Bouteille@recherche');
 
 $router->run();
 
