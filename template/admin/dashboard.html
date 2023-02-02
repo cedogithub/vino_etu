@@ -1,6 +1,9 @@
 {% extends "admin/base.html" %}
 
 {% block main %}
+
+
+
 <h1 class=" text-center text-4xl font-bold lg:text-5xl xl:text-6xl mt-12 mb-16">Dashboard</h1>
 
 <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
@@ -22,7 +25,14 @@
       <div class="text-center md:border-r">
         <h6 class="text-4xl text-[#651fff] font-bold lg:text-5xl xl:text-6xl">{{bouteille24h}}</h6>
         <p class="text-sm font-bold tracking-widest text-gray-800 uppercase lg:text-base">
-            Bouteille ajouter<br> dernier 24H
+            Bouteilles ajouter<br> dernier 24H
+
+        </p>
+      </div>
+      <div class="text-center md:border-r">
+        <h6 class="text-4xl text-[#651fff] font-bold lg:text-5xl xl:text-6xl">{{bouteilleTotal}}</h6>
+        <p class="text-sm font-bold tracking-widest text-gray-800 uppercase lg:text-base">
+            Bouteilles Total
 
         </p>
       </div>
@@ -47,39 +57,46 @@
                     Utilisateurs
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    Role
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Nom du Cellier
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Bouteilles dans cellier
                 </th>
-                <!-- <th scope="col" class="px-6 py-3">
-                    Action
-                </th> -->
             </tr>
         </thead>
         
 {% for bouteille in findBouteilleParUsers %}
 
-<!-- 
-{{bouteille.nbBouteille}}
-{{bouteille.cel_nom}} -->
-<!-- {{bouteille.uti_courriel}} -->
-
         <tbody>
             <tr class="bg-white border-b ">
                 <td class="w-4 p-4">
                     <div class="flex items-center">
-                       
+                        
                     </div>
                 </td>
                 <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap ">
                     <img class="w-10 h-10 rounded-full" src="../../public/img/user.png" alt="Jese image">
                     <div class="pl-3">
-                        <div class="text-base font-semibold">Neil Sims</div>
+                        <div class="text-base font-semibold">{{bouteille.uti_prenom}} {{bouteille.uti_nom}}</div>
                         <div class="font-normal text-gray-500">{{bouteille.uti_courriel}}
                         </div>
                     </div>  
                 </th>
+                <td class="px-6 py-4">
+                    <div class="flex items-center">
+                        
+                        {% if bouteille.uti_rol_id == 2 %}
+                        Admin
+                        {% else %}
+                        Membre
+
+                    {% endif %}
+    
+                    </div>
+                </td>
                 <td class="px-6 py-4">
                     {{bouteille.cel_nom}}
                 </td>

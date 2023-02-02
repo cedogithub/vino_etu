@@ -11,15 +11,16 @@ class Admin
         $celliers = $model-> getNombreCelliers();
         $NbCellier = $model-> getNbParCelliers();
         $findBouteilleParUsers = $model-> findBouteilleParUsers();
-        $bouteille24h = $model-> getNbBouteille24h();
+        $bouteille24h = $model->getNbBouteille24h();
+        $bouteilleTotal = $model->getNombreBouteilleTotal();
 
         $this->render('admin/dashboard.html', [
             'usagers' => $usagers,
             'celliers' => $celliers,
             'NbCellier' =>$NbCellier,
             'findBouteilleParUsers' =>$findBouteilleParUsers,
-            'bouteille24h' => $bouteille24h
-
+            'bouteille24h' => $bouteille24h,
+            'bouteilleTotal' => $bouteilleTotal
         ]);
      }
 

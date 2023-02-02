@@ -19,6 +19,13 @@ class AdminModele extends Modele {
         return $result['nbUsager'];
     }
     /**
+     * Affiche le nombre total de bouteilles dans la BD 
+     */
+    public function getNombreBouteilleTotal(){
+        $result = $this->database->fetch("SELECT COUNT(*) as bouteilleTotal FROM `bouteille_du_cellier`");
+        return $result['bouteilleTotal'];
+    }
+    /**
      * Affiche le nombre de celliers total dans la BD
      */
     public function getNombreCelliers(){
@@ -49,13 +56,9 @@ class AdminModele extends Modele {
      * Affiche le nombre de bouteille ajouter par l'usager et son cellier
      */
     public function findBouteilleParUsers(){
-        $result = $this->database->fetchAll("SELECT COUNT(bouteille_du_cellier.bdc_bout_id) as nbBouteille,cellier.cel_nom,utilisateur.uti_courriel FROM `cellier` JOIN bouteille_du_cellier on cellier.cel_id = bouteille_du_cellier.bdc_cel_id join utilisateur on cellier.cel_uti_id = utilisateur.uti_id group by utilisateur.uti_courriel;
+        $result = $this->database->fetchAll("SELECT COUNT(bouteille_du_cellier.bdc_bout_id) as nbBouteille,cellier.cel_nom,utilisateur.uti_courriel,utilisateur.uti_nom,utilisateur.uti_prenom,utilisateur.uti_rol_id FROM `cellier` JOIN bouteille_du_cellier on cellier.cel_id = bouteille_du_cellier.bdc_cel_id join utilisateur on cellier.cel_uti_id = utilisateur.uti_id group by utilisateur.uti_courriel;
         ");
-        // foreach($result as $row => $value) {
-        //     print_r($row);
-        //     print_r($value['']);
-
-        // }
+    
     return $result  ;
     }
     /**
