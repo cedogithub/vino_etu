@@ -33,7 +33,11 @@ class Bouteille
         ]);
     }
 
-
+    /* 
+    * Recherche
+    *
+    *
+    */
     public function recherche()
     {
         $recherche = $_POST['recherche'];
@@ -46,6 +50,19 @@ class Bouteille
 
     }
         
+    /* trie */
+    public function tri()
+    {
+        $tri = $_POST['tri'];
+        $model = new BouteilleModel();
+        print_r($tri);
+        $resultat = $model->triNom($tri);
+        $this->render('bouteille/cellier.html', [
+            'bouteilles' => $resultat
+        ]);
+
+    }
+
     /**
      * Affiche la page d'ajout de bouteille
      *
