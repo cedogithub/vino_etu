@@ -20,4 +20,7 @@ php -S localhost:8089
 ### Database 
 - https://github.com/dg/dibi
 
+### note:
+- Ajouter première lettre du prénom
+- menu et recherche
 
