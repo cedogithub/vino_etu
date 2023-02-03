@@ -1,4 +1,4 @@
-{% extends "compte/base.html" %}
+{% extends "bouteille/base.html" %}
 
 {% block main %}
 
@@ -14,7 +14,7 @@
             sm:w-28 sm:h-28">
         <span class="font-bold sans_6  capitalize text-black
             text-3xl
-             sm:text-5xl">C</span>
+             sm:text-5xl">{{session.utilisateur.uti_prenom |first}}</span>
     </div>
 </section>
 <section class="section mt-4 sm:mt-6 md:mt-9">
