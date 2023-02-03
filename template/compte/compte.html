@@ -1,1 +1,28 @@
-<h1>Commencement compte usager</h1>
+{% extends "admin/base.html" %}
+
+{% block main %}
+
+<header>
+    <img class="max-h-24 md:max-h-32 w-full object-cover" src="/public/img/drizzle_bg_2.jpg" alt="">
+</header>
+
+<section class="section -mt-9 sm:-mt-11">
+    <div class="relative inline-flex items-center justify-center overflow-hidden bg-teal-100 rounded-full
+            w-16 h-16
+            sm:w-28 sm:h-28">
+        <span class="font-normal font-sans capitalize text-black
+                    text-2xl
+                    sm:text-6xl ">K</span>
+    </div>
+</section>
+
+   
+<style>
+    .section {
+        max-width: clamp(0px, 80vw, 1200px);
+        margin-left: auto;
+        margin-right: auto;
+      }
+  </style>
+
+{% endblock main %}
