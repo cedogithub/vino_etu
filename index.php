@@ -43,7 +43,10 @@ $router->before('GET|POST', '/compte/.*', 'Bouteille@protection');
 $router->get('/compte/compte', 'Compte@compte');
 
 
+/* Liste des Celliers */
+$router->get('/celliers/cellier', 'Cellier@cellier');
 
+$router->get('/celliers/ajouter', 'Cellier@ajouter');
 
 $router->run();
 
