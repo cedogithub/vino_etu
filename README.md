@@ -21,6 +21,7 @@ php -S localhost:8089
 - https://github.com/dg/dibi
 
 ### note:
+- table BD pour statistique
 - Ajouter première lettre du prénom
 - menu et recherche
 
