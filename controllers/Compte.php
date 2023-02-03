@@ -3,7 +3,7 @@ class Compte
 {
     public function compte() 
     {
-        $this->render('compte/compte.html',[
+        $this->render('compte/compte.html', [
            
         ]);   
     }
