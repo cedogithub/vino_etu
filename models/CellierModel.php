@@ -27,6 +27,15 @@ class CellierModel extends Modele {
     {
         return $this->database->fetch('SELECT * FROM cellier WHERE cel_uti_id  = ?', $id_utilisateur);
     }
+
+    public function getAllCelliers($id_utilisateur){
+    
+    
+        return $this->database->fetchAll('SELECT * FROM cellier WHERE cel_uti_id  = ?', $id_utilisateur);
+        }
+    
+    
+    
 }
 
 ?>
