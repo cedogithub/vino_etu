@@ -11,12 +11,14 @@
       <article class="flex justify-center items-center">
           <div class="w-full max-w-md pt-6 md:pt-12">
               <form x-data="combobox" method="POST" action="/bouteille/insertion" class="bg-white border-solid border	border-gray-300 shadow-md rounded px-8 pt-6  pb-8 mb-4">
-                  <div class="mb-4">
+                  
+                <div class="mb-4">
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                         Date d'achat
                       </label>
-                      <input name="bdc_date_achat" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="datetime-local" placeholder="">
-                  </div>
+                      <input name="bdc_date_achat" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="date">
+                  </div> 
+
                   <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="choix_vin">Choisir une bouteille:</label>
                     <input 
@@ -56,7 +58,7 @@
                   <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                       Garder jusqu'à
                   </label>
-                  <input name="bdc_garde_jusqua" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="datetime-local" placeholder="garde_jusqua">
+                  <input name="bdc_garde_jusqua" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="date" >
                 </div>
                 <div class="mt-9 flex items-center justify-between">
                   <button class="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
