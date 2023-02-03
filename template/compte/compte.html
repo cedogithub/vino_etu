@@ -1,4 +1,4 @@
-{% extends "admin/base.html" %}
+{% extends "compte/base.html" %}
 
 {% block main %}
 
@@ -7,13 +7,19 @@
 </header>
 
 <section class="section -mt-9 sm:-mt-11">
-    <div class="relative inline-flex items-center justify-center overflow-hidden bg-teal-100 rounded-full
-            w-16 h-16
+    <div class="relative inline-flex items-center justify-center overflow-hidden 
+            bg-violet-300 rounded-full
+            border-8 border-white border-solid
+            w-20 h-20
             sm:w-28 sm:h-28">
-        <span class="font-normal font-sans capitalize text-black
-                    text-2xl
-                    sm:text-6xl ">K</span>
+        <span class="font-bold sans_6  capitalize text-black
+                    text-3xl
+                    sm:text-5xl">C</span>
     </div>
+</section>
+<section class="section mt-5 md:mt-10">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold ">Mon compte</h1>
+
 </section>
 
    
@@ -22,6 +28,9 @@
         max-width: clamp(0px, 80vw, 1200px);
         margin-left: auto;
         margin-right: auto;
+      }
+      .sans_6 {
+        font-family: sans-serif;
       }
   </style>
 
