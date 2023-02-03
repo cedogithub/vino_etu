@@ -1,0 +1,55 @@
+{% extends "compte/base.html" %}
+
+{% block main %}
+
+<header>
+    <img class="max-h-24 md:max-h-32 w-full object-cover" src="/public/img/drizzle_bg_2.jpg" alt="">
+</header>
+
+<section class="section -mt-9 sm:-mt-11">
+    <div class="relative inline-flex items-center justify-center overflow-hidden 
+            bg-violet-300 rounded-full
+            border-8 border-white border-solid
+            w-20 h-20
+            sm:w-28 sm:h-28">
+        <span class="font-bold sans_6  capitalize text-black
+            text-3xl
+             sm:text-5xl">C</span>
+    </div>
+</section>
+<section class="section mt-4 sm:mt-6 md:mt-9">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold ">Mon compte</h1>
+
+</section>
+{# liste: https://flowbite.com/docs/typography/lists/  #}
+<section class="section mt-8 sm:mt-10 md:mt-9">
+    <h1 class="text-lg sm:text-2xl md:text-3xl font-extrabold ">Mes informations</h1>
+
+    <dl class="max-w-md text-gray-900 divide-y divide-gray-200 mt-7">
+        <div class="flex flex-col pb-3">
+            <dt class="mb-1 text-gray-500 md:text-lg ">Email address</dt>
+            <dd class="text-base md:text-lg font-semibold">yourname@flowbite.com</dd>
+        </div>
+        <div class="flex flex-col py-3">
+            <dt class="mb-1 text-gray-500 md:text-lg ">Home address</dt>
+            <dd class="text-base md:text-lg font-semibold">92 Miles Drive, Newark, NJ 07103, California, USA</dd>
+        </div>
+        <div class="flex flex-col pt-3">
+            <dt class="mb-1 text-gray-500 md:text-lg ">Phone number</dt>
+            <dd class="text-base md:text-lg font-semibold">+00 123 456 789 / +12 345 678</dd>
+        </div>
+    </dl>
+</section>
+   
+<style>
+    .section {
+        max-width: clamp(0px, 80vw, 1200px);
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .sans_6 {
+        font-family: sans-serif;
+      }
+  </style>
+
+{% endblock main %}
