@@ -36,8 +36,14 @@ $router->post('/bouteille/modifier', 'Bouteille@modifierBouteille');
 
 
 $router->get('/bouteille/supprimer/{id}', 'Bouteille@supprimer');
-
 $router->post('/bouteille/recherche', 'Bouteille@recherche');
+
+/* route compte */
+$router->before('GET|POST', '/compte/.*', 'Bouteille@protection');
+$router->get('/compte/compte', 'Compte@compte');
+
+
+
 
 $router->run();
 
