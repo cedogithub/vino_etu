@@ -44,9 +44,9 @@ $router->get('/compte/compte', 'Compte@compte');
 
 
 /* Liste des Celliers */
-$router->get('/celliers/cellier', 'Cellier@cellier');
+$router->get('/cellier/cellier', 'Cellier@cellier');
 
-$router->get('/celliers/ajouter', 'Cellier@ajouter');
+$router->get('/cellier/ajouter', 'Cellier@ajouter');
 
 $router->run();
 

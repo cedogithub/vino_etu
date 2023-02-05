@@ -2,11 +2,11 @@
  class Cellier {
 
     public function cellier(){
-        $this->render('celliers/cellier.html');
+        $this->render('cellier/cellier.html');
      
     }
     public function ajout(){
-        $this->render('celliers/ajout.html');
+        $this->render('cellier/ajout.html');
      
     }
 
