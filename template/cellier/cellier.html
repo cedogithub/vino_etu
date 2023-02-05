@@ -28,28 +28,26 @@
             Ajouter un cellier
         </button>
     
-        <div x-transition x-show="open === true" class="flex justify-center items-center p-5 fixed inset-0 bg-black bg-opacity-50 z-50">
-            <div class="flex flex-col relative  rounded-lg shadow-lg px-5 py-8 bg-white">
-
+        {# https://alpineapple.dev/modal/ #}
+        <div x-transition x-show="open === true" class="flex justify-center items-center  fixed inset-0 bg-black bg-opacity-50 z-50">
+            <div class="flex flex-col relative  rounded-lg shadow-lg px-5 pt-6 pb-3 bg-white">
                 <div class=""  @click.outside="open = false">
-                    <form class="bg-white  rounded px-8 pt-6 pb-8 mb-4">
+                    <form class="bg-white rounded p-2 mb-4">
                       <div class="mb-4">
                         
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-                          Username
+                          Nom du cellier:
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="">
                       </div>
                      
                       <div class="flex items-center justify-between">
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                        <button class="bg-gray-800  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                           Ajouter
                         </button>
-                        <a 
+                        <img 
                         @click="open = false"
-                        class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
-                          Annuler
-                        </a>
+                        class="mr-2 w-8 cursor-pointer" src="/public/img/cross-svg.svg" alt="">
                       </div>
                     </form>
                   </div>
