@@ -30,11 +30,24 @@ class CellierModel extends Modele {
 
     public function getAllCelliers($id_utilisateur){
     
-    
         return $this->database->fetchAll('SELECT * FROM cellier WHERE cel_uti_id  = ?', $id_utilisateur);
-        }
+    }
     
-    
+        
+    /**
+     * requête AJOUT d'un nouveau cellier
+     *
+     * @param  mixed $id_utilisateur
+     * @param  mixed $cel_nom
+     * @return void
+     */
+    public function ajoutNouvCellier($id_utilisateur, $cel_nom) 
+    {
+        $this->database->query('INSERT INTO cellier', [
+            'cel_nom' => $cel_nom,
+            'cel_uti_id'=> $id_utilisateur
+        ]);
+    }
     
 }
 
