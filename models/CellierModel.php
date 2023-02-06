@@ -35,7 +35,7 @@ class CellierModel extends Modele {
     
         
     /**
-     * requête AJOUT d'un nouveau cellier
+     * requête AJOUTER un nouveau cellier
      *
      * @param  mixed $id_utilisateur
      * @param  mixed $cel_nom
@@ -47,6 +47,17 @@ class CellierModel extends Modele {
             'cel_nom' => $cel_nom,
             'cel_uti_id'=> $id_utilisateur
         ]);
+    }
+
+        
+    /**
+     * requête SUPPRESSION d'un cellier
+     *
+     * @return void
+     */
+    public function supprimerCellier($cel_id)
+    {
+        $this->database->query('DELETE FROM cellier WHERE cel_id = ?', $cel_id);
     }
     
 }
