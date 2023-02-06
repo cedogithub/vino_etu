@@ -5,9 +5,40 @@
         $this->render('cellier/cellier.html');
      
     }
+   
+    /**
+     * L'ajout d'un nouveau cellier 
+     *
+     * @return void
+     */
     public function ajout(){
-        $this->render('cellier/ajout.html');
-     
+        $model = new CellierModel();
+
+        $model -> ajoutNouvCellier($_SESSION['uti_id'], $_POST['ajoutCellier']);
+
+        header("Location: /cellier/cellier?message=ajouter");
+    }
+
+    
+    /**
+     * Supprimer un cellier
+     *
+     * @return void
+     */
+    public function supprim($cel_id){
+       $model = new CellierModel();
+
+       $model -> supprimerCellier($cel_id);
+
+       header("Location: /cellier/cellier?message=supprimer");
+    }
+
+    public function modif(){
+        $model = new CellierModel();
+
+        $model -> modifierCellier($_POST['cel_if'], $_POST['cel_nom']);
+
+        header("Location: /cellier/cellier?message=modifier");
     }
 
     /**
