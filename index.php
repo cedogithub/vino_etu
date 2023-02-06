@@ -47,6 +47,7 @@ $router->get('/compte/compte', 'Compte@compte');
 $router->get('/cellier/cellier', 'Cellier@cellier');
 
 $router->post('/cellier/ajout', 'Cellier@ajout');
+$router->get('/cellier/supprim/{id}','Cellier@supprim');
 
 $router->run();
 
