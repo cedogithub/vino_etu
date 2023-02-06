@@ -60,6 +60,20 @@ class CellierModel extends Modele {
         $this->database->query('DELETE FROM cellier WHERE cel_id = ?', $cel_id);
     }
     
+    
+    /**
+     * requete MODIFIER du nom d'un Cellier
+     *
+     * @param  mixed $cel_id
+     * @param  mixed $cel_nom
+     * @return void
+     */
+    public function modifierCellier($cel_id, $cel_nom)
+    {
+        $this->database->query('UPDATE cellier SET', [
+            'cel_nom' => $cel_nom,
+        ], 'WHERE cel_id = ?', $cel_id);
+    }
 }
 
 ?>
