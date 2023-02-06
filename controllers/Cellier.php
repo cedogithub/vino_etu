@@ -17,6 +17,19 @@
         $model -> ajoutNouvCellier($_SESSION['uti_id'], $_POST['ajoutCellier']);
     }
 
+    
+    /**
+     * Supprimer un cellier
+     *
+     * @return void
+     */
+    public function supprim($cel_id){
+       $model = new CellierModel();
+
+       $model -> supprimerCellier($cel_id);
+
+    
+    }
     /**
      * Affiche la page demandée
      *
