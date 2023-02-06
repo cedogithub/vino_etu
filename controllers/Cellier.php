@@ -5,9 +5,16 @@
         $this->render('cellier/cellier.html');
      
     }
+   
+    /**
+     * L'ajout d'un nouveau cellier 
+     *
+     * @return void
+     */
     public function ajout(){
-        $this->render('cellier/ajout.html');
-     
+        $model = new CellierModel();
+
+        $model -> ajoutNouvCellier($_SESSION['uti_id'], $_POST['ajoutCellier']);
     }
 
     /**
