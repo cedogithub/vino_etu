@@ -15,6 +15,8 @@
         $model = new CellierModel();
 
         $model -> ajoutNouvCellier($_SESSION['uti_id'], $_POST['ajoutCellier']);
+
+        header("Location: /cellier/cellier?message=ajouter");
     }
 
     
@@ -27,12 +29,16 @@
        $model = new CellierModel();
 
        $model -> supprimerCellier($cel_id);
+
+       header("Location: /cellier/cellier?message=supprimer");
     }
 
     public function modif(){
         $model = new CellierModel();
 
         $model -> modifierCellier($_POST['cel_if'], $_POST['cel_nom']);
+
+        header("Location: /cellier/cellier?message=modifier");
     }
 
     /**
