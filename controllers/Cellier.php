@@ -27,9 +27,14 @@
        $model = new CellierModel();
 
        $model -> supprimerCellier($cel_id);
-
-    
     }
+
+    public function modif(){
+        $model = new CellierModel();
+
+        $model -> modifierCellier($_POST['cel_if'], $_POST['cel_nom']);
+    }
+
     /**
      * Affiche la page demandée
      *
