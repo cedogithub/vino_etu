@@ -33,6 +33,12 @@
        header("Location: /cellier/cellier?message=supprimer");
     }
 
+        
+    /**
+     * Modifier le nom d'un cellier
+     *
+     * @return void
+     */
     public function modif(){
         $model = new CellierModel();
 
