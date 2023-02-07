@@ -53,13 +53,14 @@
                   </button>
 
                   <div class="cursor-pointer">
-                    <a href="/bouteille/supprimer/{{resultatDetail.bdc_id}}">
+                    <a href="/bouteille/supprimer/{{resultatDetail.bdc_id}}?bdc_cel_id={{resultatDetail.bdc_cel_id}}">
                       <img class="mr-2" src="/public/img/poubelle.svg" alt="">
                     </a>
                   </div>
                 
                 </div>
                 <input type="hidden" name="bdc_id" value="{{resultatDetail.bdc_id}}">
+                <input type="hidden" name="bdc_cel_id" value="{{resultatDetail.bdc_cel_id}}">
               </form>
               <p class="text-center text-gray-500 text-xs">
                 &copy;2023 Vino Corp. All rights reserved.

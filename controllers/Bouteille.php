@@ -93,7 +93,8 @@ class Bouteille
     public function modifierBouteille()
     {
         (new BouteilleModel())->modifierBouteille($_POST);
-        header("Location: /bouteille/cellier?message=modifier");
+        $id_cellier = $_POST['bdc_cel_id'];
+        header("Location: /cellier/un/$id_cellier?message=modifier");
         exit();
     }
 
@@ -125,7 +126,8 @@ class Bouteille
     public function supprimer($id_bouteille)
     {
         (new BouteilleModel())->supprimer($id_bouteille);
-        header("Location: /bouteille/cellier?message=supprimer");
+        $id_cellier = $_GET['bdc_cel_id'];
+        header("Location: /cellier/un/$id_cellier?message=supprimer");
         exit();
     }
 
