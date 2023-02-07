@@ -63,7 +63,7 @@
     public function modif(){
         $model = new CellierModel();
 
-        $model -> modifierCellier($_POST['cel_if'], $_POST['cel_nom']);
+        $model -> modifierCellier($_POST['cel_id'], $_POST['cel_nom']);
 
         header("Location: /cellier/cellier?message=modifier");
     }
