@@ -45,13 +45,13 @@
     <div class="flex justify-center items-center gap-14 relative">
       <div x-data="{open : false}" class="flex flex-col  space-y-1 ">
           <div class="">
-              <p @click="open = true" class="flex items-center">
+              <p @click="open = true"  class="flex items-center">
                   <span class="font-medium">Compte</span>
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-1 mx-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 0 1 1.414 0L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 0-1.414z" clip-rule="evenodd"></path></svg>
               </p>
           </div>
           <!--Options-->
-          <div x-show="open === true" x-transition="" @click.outside="open = false" class="absolute top-11 flex flex-col text-sm w-40 left-0 mt-2 bg-white rounded-sm shadow-md overflow-hidden" style="display: none;">
+          <div x-show="open === true" x-cloak x-transition="" @click.outside="open = false" class="absolute top-11 flex flex-col text-sm w-40 left-0 mt-2 bg-white rounded-sm shadow-md overflow-hidden" style="display: none;">
               <div>
                   <a class="w-full block hover:bg-slate-200 p-2" href="/compte/compte">Profil</a>
                   <a class="w-full block hover:bg-slate-200 p-2" href="/utilisateur/deconnexion">Deconnexion</a>
@@ -112,7 +112,9 @@
    </nav>
   
    <!-- Dropdown menu -->
-   <div x-show="isOpen" 
+   <div 
+   x-cloak
+   x-show="isOpen" 
    @click.away="isOpen = false"
    x-transition:enter="transition ease-out duration-100"
    x-transition:enter-start="opacity-0 scale-90"
@@ -195,8 +197,11 @@
   .sans_6 {
     font-family: sans-serif;
   }
+
+  [x-cloak] { display: none !important; }
   </style>
-   
+ {# https://alpinejs.dev/directives/cloak #}
+
 
 {% block main %}
 
