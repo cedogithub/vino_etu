@@ -29,3 +29,7 @@ php -S localhost:8089
 - DELETE DB cascade cellier suppression
 - ajout d'un BOUTON de RETOUR dans la liste des bouteille d'un cellier
 - ajout du mode STICKY HEADER dans la liste des bouteille d'un cellier [exemple to be sticky and together: top jusqu'a la premiere bouteille de la liste] 
+- bouton: desktop mettre a droite
+- aligenment des boutons sur les pages
+- mettre un a à la place du js !
+- supprimer marche pas sur hostinger
