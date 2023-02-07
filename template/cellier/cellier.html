@@ -95,15 +95,26 @@
                       <span class="sr-only">Refresh icon</span>
                   </div>
                   <div class="ml-3 text-sm font-normal">
-                      <div class="mb-2 text-sm font-normal">A new software version is available for download.</div> 
-                      <div class="grid grid-cols-2 gap-2">
-                          <div>
-                              <a href="#" class="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 ">Modifier</a>
-                          </div>
-                          <div>
-                              <a href="#" class="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200">Supprimer</a> 
-                          </div>
-                      </div>    
+                    {# Formulaire de modif dun cellier #}
+                    <form class="bg-white rounded p-2 mb-1 ml-3" action="/cellier/ajout" method="post">
+                        <div class="mb-3">
+                        <label class="block mb-2 text-sm font-normal " for="username">
+                          Nom du cellier:
+                        </label>
+                        <input name="ajoutCellier" class="shadow-sm appearance-none border rounded w-full py-1.5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="{{cellier.cel_nom}}" type="text" required>
+                        </div>
+                        <div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div>
+                                    <a href="#" class="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 ">Modifier</a>
+                                </div>
+                                <div>
+                                    <a href="/cellier/supprim/{{cellier.cel_id}}" class="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-center text-white  bg-black border border-gray-300 rounded-lg focus:ring-4 focus:outline-none focus:ring-gray-200">Supprimer</a> 
+                                </div>
+                            </div> 
+                      </div>
+                      </form>
+            
                   </div>
                   <button 
                   @click="open = false"
