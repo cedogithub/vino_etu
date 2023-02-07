@@ -64,6 +64,19 @@
 
         header("Location: /cellier/cellier?message=modifier");
     }
+    
+    /**
+     * Route s'assurant que l'usager soit authentifié
+     *
+     * @return void
+     */
+    public function protection()
+    {
+        if (!isset($_SESSION['utilisateur'])) {
+            header('location: /utilisateur/accueil');
+            exit();
+        } 
+    } 
 
     /**
      * Affiche la page demandée
@@ -84,8 +97,6 @@
         echo $twig->render($file_name , $data);
     }
 
+}
 
-
-
- }
 ?>
