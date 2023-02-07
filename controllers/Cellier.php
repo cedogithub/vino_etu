@@ -1,9 +1,27 @@
 <?php
  class Cellier {
 
-    public function cellier(){
-        $this->render('cellier/cellier.html');
-     
+    public function toutCellier() {
+        $model = new CellierModel();
+
+        $this->render('cellier/cellier.html', [
+            'celliers' => $model->getAllCelliers($_SESSION['uti_id'])
+        ]);
+    }
+    
+    /**
+     * Contrôle l'affichage d'un cellier de l'utilisateur
+     *
+     * @param  mixed $cel_id
+     * @return void
+     */
+    public function unCellier($cel_id)
+    {
+        $bouteilles = (new CellierModel())->getBouillesDunCellier($cel_id);
+        $this->render('cellier/un.html', [
+            'bouteilles' => $bouteilles,
+            'message' => $_GET['message'] ?? 'ouii'
+        ]); 
     }
    
     /**
