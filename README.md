@@ -25,3 +25,4 @@ php -S localhost:8089
 - millesime non obligatoire et date d'achat
 - démarcation en haut pour la nav du cellier
 - route supprimer et modifier des carte de cellier
+- message quand bouteille et cellier vide
