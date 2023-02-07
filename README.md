@@ -27,3 +27,5 @@ php -S localhost:8089
 - route supprimer et modifier des carte de cellier
 - message quand bouteille et cellier vide
 - DELETE DB cascade cellier suppression
+- ajout d'un BOUTON de RETOUR dans la liste des bouteille d'un cellier
+- ajout du mode STICKY HEADER dans la liste des bouteille d'un cellier [exemple to be sticky and together: top jusqu'a la premiere bouteille de la liste] 
