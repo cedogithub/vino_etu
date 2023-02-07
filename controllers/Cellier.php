@@ -17,8 +17,11 @@
      */
     public function unCellier($cel_id)
     {
+
         $bouteilles = (new CellierModel())->getBouillesDunCellier($cel_id);
+        $nom = (new CellierModel())->getNomCellier($cel_id);       
         $this->render('cellier/un.html', [
+            'nom' => $nom['cel_nom'],
             'bouteilles' => $bouteilles,
             'message' => $_GET['message'] ?? 'ouii'
         ]); 
