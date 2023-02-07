@@ -28,6 +28,17 @@ class CellierModel extends Modele {
         return $this->database->fetch('SELECT * FROM cellier WHERE cel_uti_id  = ?', $id_utilisateur);
     }
 
+    
+    /**
+     * Requête SELECT NOM des celliers
+     *
+     * @param  mixed $cel_id
+     * @return void
+     */
+    public function getNomCellier($cel_id)
+    {
+        return  $this->database->fetch('SELECT cel_nom FROM cellier WHERE cel_id = ?', $cel_id);
+    }
 
     
     /**
