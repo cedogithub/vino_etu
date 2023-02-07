@@ -9,30 +9,6 @@ class Bouteille
         } 
     } 
 
-    /**
-     * Affiche la page du cellier de l'utilisateur
-     *
-     * @return void
-     */
-    public function cellier()
-    {
-       /*  $model = new BouteilleModel();
-         $resultat = $model->rechercheNom('19');
-        
-       echo '<pre>';
-       print_r($resultat);
-       echo '</pre>'; */
-
-
-
-      
-        $bouteilles = (new BouteilleModel())->getBouteillesCellier();
-        $this->render('bouteille/cellier.html', [
-            'bouteilles' => $bouteilles,
-            'message' => $_GET['message'] ?? 'ouii'
-        ]);
-    }
-
     /* 
     * Recherche
     *
