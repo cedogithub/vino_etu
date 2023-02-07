@@ -47,11 +47,11 @@ class Bouteille
     public function nouveau()
     {  
         $bouteillesSAQ = (new BouteilleSAQModel())->getListeBouteille();
-        $cellierUtilisateur = (new CellierModel())->getCellier($_SESSION['uti_id']);
+        $listeCellier = (new CellierModel())->getAllCelliers($_SESSION['uti_id']);
 
         $this->render('bouteille/nouveau.html',[
             'bouteillesSAQ' => $bouteillesSAQ,
-            'cellierUtilisateur' => $cellierUtilisateur 
+            'listeCellier' => $listeCellier 
         ]);
     }
 
