@@ -69,7 +69,8 @@ class Bouteille
         $_POST['bdc_bout_id'] = $id_bouteille;
        
         $cellier = $bte->insertion($_POST);
-        header("Location: /bouteille/cellier?message=ajouter");
+        $id_cellier = $_POST['bdc_cel_id'];
+        header("Location: /cellier/un/$id_cellier?message=ajouter");
         exit();
     }
     
