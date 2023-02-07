@@ -1,14 +1,85 @@
 <?php
  class Cellier {
 
-    public function cellier(){
-        $this->render('celliers/cellier.html');
-     
+    public function toutCellier() {
+        $model = new CellierModel();
+
+        $this->render('cellier/cellier.html', [
+            'celliers' => $model->getAllCelliers($_SESSION['uti_id'])
+        ]);
     }
+    
+    /**
+     * Contrôle l'affichage d'un cellier de l'utilisateur
+     *
+     * @param  mixed $cel_id
+     * @return void
+     */
+    public function unCellier($cel_id)
+    {
+
+        $bouteilles = (new CellierModel())->getBouillesDunCellier($cel_id);
+        $nom = (new CellierModel())->getNomCellier($cel_id);       
+        $this->render('cellier/un.html', [
+            'nom' => $nom['cel_nom'],
+            'bouteilles' => $bouteilles,
+            'message' => $_GET['message'] ?? 'ouii'
+        ]); 
+    }
+   
+    /**
+     * L'ajout d'un nouveau cellier 
+     *
+     * @return void
+     */
     public function ajout(){
-        $this->render('celliers/ajout.html');
-     
+        $model = new CellierModel();
+
+        $model -> ajoutNouvCellier($_SESSION['uti_id'], $_POST['ajoutCellier']);
+
+        header("Location: /cellier/cellier?message=ajouter");
     }
+
+    
+    /**
+     * Supprimer un cellier
+     *
+     * @return void
+     */
+    public function supprim($cel_id){
+       $model = new CellierModel();
+
+       $model -> supprimerCellier($cel_id);
+
+       header("Location: /cellier/cellier?message=supprimer");
+    }
+
+        
+    /**
+     * Modifier le nom d'un cellier
+     *
+     * @return void
+     */
+    public function modif(){
+        $model = new CellierModel();
+
+        $model -> modifierCellier($_POST['cel_if'], $_POST['cel_nom']);
+
+        header("Location: /cellier/cellier?message=modifier");
+    }
+    
+    /**
+     * Route s'assurant que l'usager soit authentifié
+     *
+     * @return void
+     */
+    public function protection()
+    {
+        if (!isset($_SESSION['utilisateur'])) {
+            header('location: /utilisateur/accueil');
+            exit();
+        } 
+    } 
 
     /**
      * Affiche la page demandée
@@ -29,8 +100,6 @@
         echo $twig->render($file_name , $data);
     }
 
+}
 
-
-
- }
 ?>

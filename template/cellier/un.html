@@ -50,13 +50,17 @@
 
 
   {% endif %}
-  <h1 class="text-2xl md:text-4xl font-bold pl-5 md:pl-0  mt-5 md:mt-7">Mon Cellier</h1>
+</section>
+
+<section class="section_clamp mt-5">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold ">{{nom}}</h1>
+
 </section>
 
 
-<section id="app-4" class="flex flex-wrap mt-8 section">
+<section id="app-4" class="flex flex-wrap mt-8 section gap-2">
 {% for bouteille in bouteilles %}
-<article class="w-full md:w-1/2 rounded-xl border-2 border-gray-100 bg-white flex items-center p-6"
+<article class="w-full  sm:w-[calc(50%-2rem)]   border-gray-200 sm:rounded-lg shadow  bg-white flex items-center p-6 py-7"
    data-js-bouteille
   data-js-id="{{bouteille.bdc_id}}"
   @click="">
@@ -122,7 +126,7 @@
 <section
 class="overflow-hidden sm:grid sm:grid-cols-2 sm:items-center section"
 >
-<div class="p-8 md:p-12 lg:px-16 lg:py-24">
+<div class="p-8 md:p-4 lg:px-4 lg:py-4">
   <div class="mx-auto max-w-xl text-center sm:text-left">
     <h2 class="text-2xl font-bold text-gray-900 md:text-3xl">
       Bienvenue sur Vino, <br> Ajouter votre première bouteille.
@@ -151,13 +155,29 @@ class="overflow-hidden sm:grid sm:grid-cols-2 sm:items-center section"
 </section>
 {% endif %}
   <style>
-    @media (min-width: 760px) {
+
+    .section_clamp {
+      max-width: clamp(0px, 80vw, 1200px);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (min-width: 640px) {
       .section {
-        max-width: clamp(0px, 80vw, 1200px);
+        max-width: clamp(0px, 95vw, 1200px);
         margin-left: auto;
         margin-right: auto;
       }
+      .article {
+        border-radius: 0.75rem;
+      }
     }
+    @media (min-width: 840px) {
+      .section {
+        max-width: clamp(0px, 80vw, 1200px);
+      }
+    }
+
 
   </style>
   <script src="/public/js/Bouteille.js"></script>
