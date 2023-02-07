@@ -18,7 +18,7 @@ class CellierModel extends Modele {
     }
     
     /**
-     * requête SELECT d'un cellier
+     * Requête SELECT d'un cellier de l'utilisateur
      *
      * @param  mixed $id_utilisateur
      * @return void
@@ -28,9 +28,38 @@ class CellierModel extends Modele {
         return $this->database->fetch('SELECT * FROM cellier WHERE cel_uti_id  = ?', $id_utilisateur);
     }
 
-    public function getAllCelliers($id_utilisateur){
+
     
+    /**
+     * Requête SELECT de tous les celliers de l'utilisateur
+     *
+     * @param  mixed $id_utilisateur
+     * @return void
+     */
+    public function getAllCelliers($id_utilisateur)
+    {
         return $this->database->fetchAll('SELECT * FROM cellier WHERE cel_uti_id  = ?', $id_utilisateur);
+    }
+    
+    /**
+     * Requête SELECT des bouteilles d'un cellier de l' utilisateur
+     *
+     * @param  int $cel_id - L'ID du cellier
+     * @return array[] liste de bouteilles d'un cellier de l'utilisateur
+     */
+    public function getBouillesDunCellier($cel_id) 
+    {
+        return $this->database->fetchAll(
+			"SELECT 
+				bouteille_du_cellier.*,
+				bouteille_saq.*			
+			from cellier
+			INNER JOIN bouteille_du_cellier ON cellier.cel_id = bouteille_du_cellier.bdc_cel_id
+			INNER JOIN bouteille_saq on bouteille_du_cellier.bdc_bout_id = bouteille_saq.bout_id 
+            WHERE  %and ", [
+				'cellier.cel_uti_id' => $_SESSION['uti_id'],
+				'cellier.cel_id' => $cel_id
+			]);
     }
     
         
