@@ -38,7 +38,7 @@ class CellierModel extends Modele {
      */
     public function getAllCelliers($id_utilisateur)
     {
-        return $this->database->fetchAll('SELECT * FROM cellier WHERE cel_uti_id  = ?', $id_utilisateur);
+        return $this->database->fetchAll('SELECT * FROM cellier  WHERE cel_uti_id  = ? ORDER BY cel_id DESC', $id_utilisateur);
     }
     
     /**
