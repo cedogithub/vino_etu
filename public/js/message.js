@@ -6,13 +6,13 @@ il y aura une erreur messagebox not defined */
 if (messageBox) {
     messageBox.addEventListener('onBlur', ()=>{
         messageBox.remove()
-        window.location.href = '/bouteille/cellier'; // ajout kenneth (je sais pourquoi )
+        window.location.href = '/cellier/cellier'; // ajout kenneth (je sais pourquoi )
     })
     let xButton = document.querySelector('[data-dismiss-target]')
     xButton.addEventListener('click', ()=>{
         console.log('x')
         messageBox.remove();
-        window.location.href = '/bouteille/cellier'; // ajout kenneth (je sais pourquoi )
+        window.location.href = '/cellier/cellier'; // ajout kenneth (je sais pourquoi )
     })
     
 }
