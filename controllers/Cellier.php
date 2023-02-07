@@ -5,7 +5,9 @@
         $model = new CellierModel();
 
         $this->render('cellier/cellier.html', [
-            'celliers' => $model->getAllCelliers($_SESSION['uti_id'])
+            'celliers' => $model->getAllCelliers($_SESSION['uti_id']),
+            'message' => $_GET['message'] ?? 'ouii'
+
         ]);
     }
     
@@ -63,7 +65,7 @@
     public function modif(){
         $model = new CellierModel();
 
-        $model -> modifierCellier($_POST['cel_if'], $_POST['cel_nom']);
+        $model -> modifierCellier($_POST['cel_id'], $_POST['cel_nom']);
 
         header("Location: /cellier/cellier?message=modifier");
     }
