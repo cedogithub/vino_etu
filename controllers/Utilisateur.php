@@ -67,7 +67,7 @@ class Utilisateur
         if(!$erreur) {
             $_SESSION['utilisateur'] = $utilisateur;
             $_SESSION['uti_id'] = $_SESSION['utilisateur']['uti_id'];
-            header("Location: /bouteille/cellier"); 
+            header("Location: /cellier/cellier"); 
             exit();
         }
         else {
