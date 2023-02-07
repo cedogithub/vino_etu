@@ -6,7 +6,7 @@
     <img class="max-h-24 md:max-h-32 w-full object-cover" src="/public/img/drizzle_bg_2.jpg" alt="">
 </header>
 
-<section class="section -mt-9 sm:-mt-11">
+{# <section class="section -mt-9 sm:-mt-11">
     <div class="relative inline-flex items-center justify-center overflow-hidden 
             bg-violet-300 rounded-full
             border-8 border-white border-solid
@@ -16,15 +16,15 @@
             text-3xl
              sm:text-5xl">{{session.utilisateur.uti_prenom |first}}</span>
     </div>
-</section>
-<section class="section mt-4 sm:mt-6 md:mt-9">
-    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold ">Mes celliers</h1>
+</section> #}
+<section class="section mt-5 sm:mt-6 md:mt-9 flex items-center gap-x-10">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold ">Liste</h1>
 
     <!-- Modal toggle -->
     <div x-data="{ open: false }">
         <button 
         @click="open = !open"
-        class="block text-sm bg-gray-800 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded mt-5" type="button">
+        class="block text-sm bg-gray-800 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded " type="button">
             Ajouter un cellier
         </button>
     
@@ -57,44 +57,28 @@
 
     </div>
 </section>
-<section>
 
-    {# {% for cellier in celliers %} #}
-        
-<div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow bg-gray-800 border-gray-700">
-    <div class="flex justify-end px-4 pt-4">
-        <button id="dropdownButton" data-dropdown-toggle="dropdown" class="inline-block text-gray-500 text-gray-400 hover:bg-gray-100 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
-            <span class="sr-only">Open dropdown</span>
-            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path></svg>
-        </button>
-        <!-- Dropdown menu -->
-        <div id="dropdown" class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 bg-gray-700">
-            <ul class="py-2" aria-labelledby="dropdownButton">
-            <li>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:bg-gray-600 text-gray-200 hover:text-white">Modifier</a>
-            </li>
-            <li>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:bg-gray-600 text-gray-200 hover:text-white">Supprimer</a>
-            </li>
-            
-            </ul>
+{# Affichage de la liste des celliers #}
+<section class="section mt-8 flex flex-col sm:flex-row flex-wrap gap-4">
+
+    {% for cellier in celliers %} 
+    <a href="/cellier/un/{{cellier.cel_id}}" class="sm:w-[calc(50%-1rem)] xl:w-[calc(33%-1rem)]">
+    <article class="relative">
+        <div class=" p-6 bg-white border border-gray-200 rounded-lg shadow ">
+            <svg class="w-10 h-10 mb-2 text-gray-500 " aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z" clip-rule="evenodd"></path><path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z"></path></svg>
+        <p class="mb-3 font-normal text-gray-500 ">Go to this step by step guideline process on how to certify for your weekly benefits:</p>  
         </div>
-    </div>
-    <div class="flex flex-col items-center pb-10">
-        <div class="flex mt-4 space-x-3 md:mt-6">
-            <h5 class="mb-1 text-xl font-medium text-gray-900 text-white">{{cellier.cel_nom}}</h5>
+        <div class="absolute top-[7.5%] right-[5%] p-2 bg-slate-100 rounded-full">
+          <img class="w-5" src="/public/img/petit-menu.svg" alt="">
+        </div> 
+    </article>
+             
+    </a>
+    {% endfor %} 
 
-        </div>
-    </div>
-</div>
-
-   {#  {% endfor %} #}
 </section>
 
 
-
-
-  
 <style>
     .section {
         max-width: clamp(0px, 80vw, 1200px);
@@ -107,35 +91,12 @@
   </style>
 
 
-  
-  <!-- Main modal -->
-{#   <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
-      <div class="relative w-full h-full max-w-md md:h-auto">
-          <!-- Modal content -->
-          <div class="relative bg-white rounded-lg shadow bg-gray-700">
-              <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center hover:bg-gray-800 hover:text-white" data-modal-hide="authentication-modal">
-                  <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                  <span class="sr-only">Close modal</span>
-              </button>
-              <div class="px-6 py-6 lg:px-8">
-                  <h3 class="mb-4 text-xl font-medium text-gray-900 text-white">Ajouter un nouveau Cellier</h3>
-                  <form class="space-y-6" action="#">
-                      <div>
-                          <label for="email" class="block mb-2 text-sm font-medium text-gray-900 text-white">Nom du Cellier</label>
-                          <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white" placeholder="Nom du cellier" required>
-                      </div>
-                      </div>
-                      <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">Ajouter le cellier</button>
-                     
-                  </form>
-              </div>
-          </div>
-      </div>
-  </div> 
-   #}
+{# message pour celliers vides #}
+{# implémenter le message pour bouteille vides #}
+{% if celliers is empty %}
 
+   
 
+{% endif %}
 
-{#   <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
- #}
 {% endblock main %}
