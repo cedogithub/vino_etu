@@ -5,7 +5,9 @@
         $model = new CellierModel();
 
         $this->render('cellier/cellier.html', [
-            'celliers' => $model->getAllCelliers($_SESSION['uti_id'])
+            'celliers' => $model->getAllCelliers($_SESSION['uti_id']),
+            'message' => $_GET['message'] ?? 'ouii'
+
         ]);
     }
     
