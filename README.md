@@ -21,7 +21,8 @@ php -S localhost:8089
 - https://github.com/dg/dibi
 
 ### note:
-- table BD pour statistique
-- Ajouter première lettre du prénom
-- menu et recherche
-
+- mettre le nom du cellier pour chaque page
+- millesime non obligatoire et date d'achat
+- démarcation en haut pour la nav du cellier
+- route supprimer et modifier des carte de cellier
+- message quand bouteille et cellier vide

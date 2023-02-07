@@ -6,7 +6,7 @@
     <img class="max-h-24 md:max-h-32 w-full object-cover" src="/public/img/drizzle_bg_2.jpg" alt="">
 </header>
 
-<section class="section -mt-9 sm:-mt-11">
+{# <section class="section -mt-9 sm:-mt-11">
     <div class="relative inline-flex items-center justify-center overflow-hidden 
             bg-violet-300 rounded-full
             border-8 border-white border-solid
@@ -16,85 +16,114 @@
             text-3xl
              sm:text-5xl">{{session.utilisateur.uti_prenom |first}}</span>
     </div>
-</section>
-<section class="section mt-4 sm:mt-6 md:mt-9">
-    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold ">Mes celliers</h1>
+</section> #}
+<section class="section mt-5 sm:mt-6 md:mt-9 flex items-center gap-x-10">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold ">Liste</h1>
 
     <!-- Modal toggle -->
     <div x-data="{ open: false }">
         <button 
         @click="open = !open"
-        class="block text-sm bg-gray-800 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded mt-5" type="button">
+        class="block text-sm bg-gray-800 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded " type="button">
             Ajouter un cellier
         </button>
     
         {# https://alpineapple.dev/modal/ #}
-        <div x-transition x-show="open === true" class="flex justify-center items-center  fixed inset-0 bg-black bg-opacity-50 z-50">
-            <div class="flex flex-col relative  rounded-lg shadow-lg px-5 pt-6 pb-3 bg-white">
-                <div class=""  @click.outside="open = false">
-                    <form class="bg-white rounded p-2 mb-4" action="/cellier/ajout" method="post">
-                      <div class="mb-4">
-                        
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-                          Nom du cellier:
-                        </label>
-                        <input name="ajoutCellier" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="" required>
+        <article x-transition x-show="open === true" class="flex justify-center items-center  fixed inset-0 bg-black bg-opacity-50 z-50">
+            <div  @click.outside="open = false">
+              <div  class="w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow " role="alert">
+                <div class="flex">
+                    <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-blue-500 bg-blue-100 rounded-lg ">
+                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"></path></svg>
+                        <span class="sr-only">Refresh icon</span>
+                    </div>
+
+                    <form class="bg-white rounded p-2 mb-1 ml-3" action="/cellier/ajout" method="post">
+                      <div class="mb-3">
+                      <label class="block mb-2 text-sm font-normal " for="username">
+                        Nom du cellier:
+                      </label>
+                      <input name="ajoutCellier" class="shadow-sm appearance-none border rounded w-full py-1.5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="" required>
                       </div>
-                     
-                      <div class="flex items-center justify-between">
-                        <button class="bg-gray-800 text-sm text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                          Ajouter
-                        </button>
-                        <img 
-                        @click="open = false"
-                        class="mr-2 w-8 cursor-pointer" src="/public/img/cross-svg.svg" alt="">
-                      </div>
+                      <div>
+                        <button type="submit" class="inline-flex justify-center w-full px-2 py-2.5 text-xs font-medium text-center text-white  rounded-md bg-gray-800">Ajouter</button>
+                    </div>
                     </form>
+                    <button 
+                    @click="open = false"
+                    type="button" class="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 " data-dismiss-target="#toast-interactive" aria-label="Close">
+                        <span class="sr-only">Close</span>
+                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
+            </div>
+              </div>
+        </article>
+    </div>
+</section>
+
+{# Affichage de la liste des celliers #}
+<section class="section mt-8 flex flex-col sm:flex-row flex-wrap gap-4">
+
+    {% for cellier in celliers %} 
+    <div 
+    x-data="{ open: false }"
+    class="sm:w-[calc(50%-1rem)] xl:w-[calc(33%-1rem)]">
+        <article 
+        class="relative">
+        <a href="/cellier/un/{{cellier.cel_id}}" >
+            <div class=" p-6 bg-white border border-gray-200 rounded-lg shadow ">
+                <svg class="w-10 h-10 mb-2 text-gray-500 " aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z" clip-rule="evenodd"></path><path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z"></path></svg>
+            <p class="mb-3 font-normal text-gray-500 ">Go to this step by step guideline process on how to certify for your weekly benefits:</p>  
+            </div>
+          </a>
+          <div 
+          @click="open = !open"
+          class="absolute top-[7.5%] right-[5%] p-2 bg-slate-100 rounded-full">
+            <img class="w-5" src="/public/img/petit-menu.svg" alt="">
+          </div> 
+        </article>    
+         {# modal de la carte liste #} {# https://flowbite.com/docs/components/toast/ #}
+         <div x-transition x-show="open === true" class="flex justify-center items-center  fixed inset-0 bg-black bg-opacity-50 z-50">
+          <div  @click.outside="open = false">
+            <div  class="w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow " role="alert">
+              <div class="flex">
+                  <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-blue-500 bg-blue-100 rounded-lg ">
+                      <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"></path></svg>
+                      <span class="sr-only">Refresh icon</span>
                   </div>
-            
+                  <div class="ml-3 text-sm font-normal">
+                      <div class="mb-2 text-sm font-normal">A new software version is available for download.</div> 
+                      <div class="grid grid-cols-2 gap-2">
+                          <div>
+                              <a href="#" class="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 ">Modifier</a>
+                          </div>
+                          <div>
+                              <a href="#" class="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200">Supprimer</a> 
+                          </div>
+                      </div>    
+                  </div>
+                  <button 
+                  @click="open = false"
+                  type="button" class="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 " data-dismiss-target="#toast-interactive" aria-label="Close">
+                      <span class="sr-only">Close</span>
+                      <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                  </button>
+              </div>
+          </div>
             </div>
         </div>
-
     </div>
-</section>
-<section>
+   
 
-    {# {% for cellier in celliers %} #}
-        
-<div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow bg-gray-800 border-gray-700">
-    <div class="flex justify-end px-4 pt-4">
-        <button id="dropdownButton" data-dropdown-toggle="dropdown" class="inline-block text-gray-500 text-gray-400 hover:bg-gray-100 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
-            <span class="sr-only">Open dropdown</span>
-            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path></svg>
-        </button>
-        <!-- Dropdown menu -->
-        <div id="dropdown" class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 bg-gray-700">
-            <ul class="py-2" aria-labelledby="dropdownButton">
-            <li>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:bg-gray-600 text-gray-200 hover:text-white">Modifier</a>
-            </li>
-            <li>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:bg-gray-600 text-gray-200 hover:text-white">Supprimer</a>
-            </li>
-            
-            </ul>
-        </div>
-    </div>
-    <div class="flex flex-col items-center pb-10">
-        <div class="flex mt-4 space-x-3 md:mt-6">
-            <h5 class="mb-1 text-xl font-medium text-gray-900 text-white">{{cellier.cel_nom}}</h5>
+    {# https://alpineapple.dev/modal/ #}
+   
 
-        </div>
-    </div>
-</div>
+    {% endfor %} 
 
-   {#  {% endfor %} #}
 </section>
 
 
-
-
-  
 <style>
     .section {
         max-width: clamp(0px, 80vw, 1200px);
@@ -107,35 +136,12 @@
   </style>
 
 
-  
-  <!-- Main modal -->
-{#   <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
-      <div class="relative w-full h-full max-w-md md:h-auto">
-          <!-- Modal content -->
-          <div class="relative bg-white rounded-lg shadow bg-gray-700">
-              <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center hover:bg-gray-800 hover:text-white" data-modal-hide="authentication-modal">
-                  <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                  <span class="sr-only">Close modal</span>
-              </button>
-              <div class="px-6 py-6 lg:px-8">
-                  <h3 class="mb-4 text-xl font-medium text-gray-900 text-white">Ajouter un nouveau Cellier</h3>
-                  <form class="space-y-6" action="#">
-                      <div>
-                          <label for="email" class="block mb-2 text-sm font-medium text-gray-900 text-white">Nom du Cellier</label>
-                          <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white" placeholder="Nom du cellier" required>
-                      </div>
-                      </div>
-                      <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">Ajouter le cellier</button>
-                     
-                  </form>
-              </div>
-          </div>
-      </div>
-  </div> 
-   #}
+{# message pour celliers vides #}
+{# implémenter le message pour bouteille vides #}
+{% if celliers is empty %}
 
+   
 
+{% endif %}
 
-{#   <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
- #}
 {% endblock main %}
