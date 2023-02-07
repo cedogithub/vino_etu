@@ -26,3 +26,4 @@ php -S localhost:8089
 - démarcation en haut pour la nav du cellier
 - route supprimer et modifier des carte de cellier
 - message quand bouteille et cellier vide
+- DELETE DB cascade cellier suppression
