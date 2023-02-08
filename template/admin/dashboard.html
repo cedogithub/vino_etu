@@ -1,4 +1,4 @@
-{% extends "admin/base.html" %}
+{% extends "bouteille/base.html" %}
 
 {% block main %}
 <header>
@@ -223,7 +223,16 @@
   {# autred block #}
 
   
-
+  <style>
+    .section {
+        max-width: clamp(0px, 80vw, 1200px);
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .sans_6 {
+        font-family: sans-serif;
+      }
+  </style>
 <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
 
 {% endblock main %}

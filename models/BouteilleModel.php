@@ -54,11 +54,11 @@ class BouteilleModel extends Modele {
 	{
 		$this->database->query('INSERT INTO bouteille_du_cellier ', [ 
 			'bdc_bout_id' => $data['bdc_bout_id'],
-			'bdc_date_achat' => $data['bdc_date_achat'],
+			'bdc_date_achat' => empty($data['bdc_date_achat']) ? $this->database->literal('NOW()') : $data['bdc_date_achat'],
 			'bdc_garde_jusqua' => $data['bdc_garde_jusqua'],
 			'bdc_notes' => $data['bdc_notes'],
 			'bdc_quantite' => $data['bdc_quantite'],
-			'bdc_millesime' => $data['bdc_millesime'],
+			'bdc_millesime' => empty($data['bdc_millesime']) ? '' :  '',
 			'bdc_cel_id' => $data['bdc_cel_id']
 		]);
         
@@ -75,11 +75,11 @@ class BouteilleModel extends Modele {
 	public function modifierBouteille($data)
 	{
 		$this->database->query('UPDATE bouteille_du_cellier SET', [
-			'bdc_date_achat' => $data['bdc_date_achat'],
+			'bdc_date_achat' => empty($data['bdc_date_achat']) ? $this->database->literal('NOW()') : $data['bdc_date_achat'],
 			'bdc_garde_jusqua' => $data['bdc_garde_jusqua'],
 			'bdc_notes' => $data['bdc_notes'],
 			'bdc_quantite' => $data['bdc_quantite'],
-			'bdc_millesime' => $data['bdc_millesime']
+			'bdc_millesime' => empty($data['bdc_millesime']) ? '' :  '',
 		], 'WHERE bdc_id = ?', $data['bdc_id']);
 
 		return $this->database->getAffectedRows();
@@ -117,7 +117,13 @@ class BouteilleModel extends Modele {
 		
 		return $bouteille;
 	}
-
+	
+	/**
+	 * Requete UPDATE d'une bouteille
+	 *
+	 * @param  mixed $id_bouteille
+	 * @return void
+	 */
 	public function supprimer($id_bouteille)
 	{
 		$this->database->query('DELETE FROM bouteille_du_cellier WHERE bdc_id = ?', $id_bouteille);
