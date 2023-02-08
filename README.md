@@ -28,3 +28,6 @@ php -S localhost:8089
 - bouton: desktop mettre a droite
 - aligenment des boutons sur les pages
 - supprimer marche pas sur hostinger
+- essayer form ajout en pop up
+- nav desktop
+- date d'achat en bas dans le form ,car non obligatoire
