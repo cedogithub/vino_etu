@@ -115,67 +115,49 @@
    </nav>
   
    <!-- Dropdown menu -->
-   <div 
+   <article
    x-cloak
    x-show="isOpen" 
-   @click.away="isOpen = false"
-   x-transition:enter="transition ease-out duration-100"
-   x-transition:enter-start="opacity-0 scale-90"
-   x-transition:enter-end="opacity-100 scale-100"
-   x-transition:leave="transition ease-in duration-100"
-   x-transition:leave-start="opacity-100 scale-100"
-   x-transition:leave-end="opacity-0 scale-90"
-   class="absolute left-4 z-20 w-56 py-2 mt-2 overflow-hidden origin-top-right rounded-md shadow-xl bg-gray-800"
-  >
-   <a href="/compte/compte" class="flex items-center p-3 -mt-2 text-sm transition-colors duration-300 transform text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white">
+   class="fixed inset-0 bg-black bg-opacity-50 z-50">
 
-        {# menu style google  #}
-            <div class="relative inline-flex items-center justify-center overflow-hidden 
+  <div id="dropdownSmall" 
+      @click.away="isOpen = false"
+      x-transition
+      class="bg-white divide-y  divide-gray-100 rounded-lg shadow 
+       absolute left-6 z-20 w-56 py-2 top-16 overflow-hidden">
+
+       <a 
+       href="/compte/compte"
+       class="flex items-center px-4 py-3 gap-x-3">
+        <div class="relative inline-flex items-center justify-center overflow-hidden 
             bg-violet-300 rounded-full
-            border-2 border-white border-solid
-                  w-10 h-10">
-              <span class="font-bold sans_6  capitalize text-black
-                  text-2xl
-                  "> {{session.utilisateur.uti_prenom |first}}</span>
-          </div>
-          {#  #}
+              border-2 border-white border-solid
+              w-10 h-10">
+          <span class="font-bold sans_6  capitalize text-black text-2xl "> 
+            {{session.utilisateur.uti_prenom |first}}
+          </span>
+      </div>
+        <div class="text-sm text-gray-900">
+          <div>  {{session.utilisateur.uti_prenom}} {{session.utilisateur.uti_nom}}</div>
+          <div class="font-medium truncate">{{session.utilisateur.uti_courriel}}</div>
+        </div>
+      </a>
+    
+    <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownSmallButton">
+      <li>
+        <a href="/cellier/cellier" class="block px-4 py-2 hover:bg-gray-100 ">Mes celliers</a>
+      </li>
+      <li>
+        <a href="/bouteille/nouveau" class="block px-4 py-2 hover:bg-gray-100 "> Nouvelle bouteille</a>
+      </li>
+    </ul>
+    <div class="py-2">
+      <a href="/utilisateur/deconnexion" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">Déconnexion</a>
+    </div>
+</div>
 
-       <div class="mx-1 ml-3">
-           <h1 class="text-sm font-semiboldtext-gray-200">
-            {{session.utilisateur.uti_prenom}}
-            {{session.utilisateur.uti_nom}}
-           </h1>
-           <p class="text-sm text-gray-400">{{session.utilisateur.uti_courriel}}</p>
-       </div>
-   </a>
-  
-   <hr class=" border-gray-700 ">
-  
-  
-   {# <a href="/bouteille/cellier" class="block px-4 py-3 text-sm  transition-colors duration-300 transform text-gray-300 hover:bg-gray-700 dark:hover:text-white">
-    Mon Cellier
-   </a> #}
-   <a href="/cellier/cellier" class="block px-4 py-3 text-sm  transition-colors duration-300 transform text-gray-300 hover:bg-gray-700 dark:hover:text-white">
-    Mes celliers
-   </a>
-   <hr class=" border-gray-700 ">
-  
-   <a href="/bouteille/nouveau" class="block px-4 py-3 text-sm  transition-colors duration-300 transform text-gray-300 hover:bg-gray-700 dark:hover:text-white">
-    Nouvelle bouteille
-   </a>
-  
- {#   <a href="/admin/dashboard" class="block px-4 py-3 text-sm  transition-colors duration-300 transform text-gray-300 hover:bg-gray-700 dark:hover:text-white">
-    Admin
-    </a> #}
-   
-    <hr class=" border-gray-700 ">
-  
-   <hr class=" border-gray-700 ">
-  
-   <a href="/utilisateur/deconnexion" class="block px-4 py-3 text-sm  capitalize transition-colors duration-300 transform text-gray-300 hover:bg-gray-700 dark:hover:text-white">
-       Déconnexion
-   </a>
-  </div>
+</article>
+
   </section>
   
   
