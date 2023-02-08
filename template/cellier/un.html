@@ -54,6 +54,12 @@
 
 <section class="section mt-5">
     <h1 class="text-2xl sm:text-2xl lg:text-4xl font-extrabold ">{{nom}}</h1>
+    
+    <div class="nav">
+      <a href="/bouteille/nouveau" class="text-sm bg-black hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded">
+        Ajouter Bouteille
+      </a> 
+    </div>
 </section>
 
 
@@ -153,6 +159,12 @@ class="fixed bottom-[5vh] right-7 md:hidden">
       margin-right: auto;
     }
 
+    .nav {
+      display: flex;
+      align-items: flex-end;
+      justify-content: end;
+    }
+
     @media (min-width: 640px) {
       .section, .section_grid {
         margin-left: auto;
@@ -165,6 +177,14 @@ class="fixed bottom-[5vh] right-7 md:hidden">
         max-width: clamp(0px, 80vw, 1200px);
       }
     }
+
+    @media (max-width: 770px){
+      .nav {
+        display: none;
+      }
+    }
+
+    
 
 
   </style>
