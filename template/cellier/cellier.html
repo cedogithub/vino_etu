@@ -61,11 +61,14 @@
 
     <!-- Modal toggle -->
     <div x-data="{ open: false }">
-        <button 
-        @click="open = !open"
-        class="block text-sm bg-gray-800 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded " type="button">
-            Ajouter un cellier
-        </button>
+
+      <p @click="open = !open" class="text-gray-500 text-lg md:text-xl">
+         <span class="inline-flex items-center font-medium text-blue-600 underline cursor-pointer">
+          Ajouter un cellier
+        <svg aria-hidden="true" class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+         </span>
+      </p>
+
     
         {# https://alpineapple.dev/modal/ #}
         <article x-transition x-show="open === true" x-cloak class="flex justify-center items-center  fixed inset-0 bg-black bg-opacity-50 z-50">
@@ -179,7 +182,7 @@
 
 <style>
     .section {
-        max-width: clamp(0px, 80vw, 1200px);
+        max-width: clamp(0px, 90vw, 1200px);
         margin-left: auto;
         margin-right: auto;
       }
