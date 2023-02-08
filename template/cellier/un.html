@@ -52,7 +52,7 @@
   {% endif %}
 </section>
 
-<section class="section_clamp mt-5">
+<section class="section mt-5">
     <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold ">{{nom}}</h1>
 </section>
 
@@ -125,48 +125,36 @@
 <section
 class="overflow-hidden sm:grid sm:grid-cols-2 sm:items-center section"
 >
-<div class="p-8 md:p-4 lg:px-4 lg:py-4">
-  <div class="mx-auto max-w-xl text-center sm:text-left">
-    <h2 class="text-md sm:text-2xl font-bold text-gray-900 md:text-3xl">
-      Bienvenue sur Vino, <br> Ajouter votre première bouteille.
-    </h2>
 
-    <p class="hidden text-gray-500 md:mt-4 md:block">
-      Anecdote: Dans le décor spectaculaire du lac de Garde, quelques appellations sont à l’origine de vins authentiques et originaux. C’est ici que naissent certains des vins les plus fameux d’Italie, comme le précieux amarone. Découvrez cette magnifique région en suivant les pas de la famille Zenato.
-    </p>
+<p>
+Refaire message de bienvenue
+</p>
 
-    <div class="mt-4 md:mt-8">
-      <a
-        href="/bouteille/nouveau"
-        class="inline-block rounded bg-emerald-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-emerald-700 focus:outline-none focus:ring focus:ring-yellow-400"
-      >
-        Commencer
-      </a>
-    </div>
-  </div>
-</div>
-
-<img
-  alt="Violin"
-  src="/public/img/drizzle_bg_2.jpg"
-  class=" hidden sm:block mt-9 sm:mt-0 h-full w-full object-cover sm:h-[calc(100%_-_2rem)] sm:self-end sm:rounded-tl-[30px] md:h-[calc(100%_-_4rem)] md:rounded-tl-[60px]"
-/>
 </section>
 {% endif %}
+
+<article
+class="fixed bottom-[5vh] right-7 md:hidden">
+  <a href="/bouteille/nouveau"
+  type="button" 
+  class="flex items-center gap-x-3 cursor-pointer
+  text-white sans_6 bg-black shadow-2xl font-medium rounded-xl text-sm px-5 py-3.5 text-center">
+    <img class='w-4' src="/public/img/pencil-white.svg" alt="">
+    <span>Ajouter une bouteille</span>
+</a>
+</article>
+
+
   <style>
 
-    .section_clamp {
-      max-width: clamp(0px, 80vw, 1200px);
+    .section {
+      max-width: clamp(0px, 90vw, 1200px);
       margin-left: auto;
       margin-right: auto;
     }
 
     @media (min-width: 640px) {
-      .section {
-        max-width: clamp(0px, 95vw, 1200px);
-        margin-left: auto;
-        margin-right: auto;
-      }
+
       .article {
         border-radius: 0.75rem;
       }
