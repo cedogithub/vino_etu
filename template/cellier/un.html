@@ -53,7 +53,7 @@
 </section>
 
 <section class="section mt-5">
-    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold ">{{nom}}</h1>
+    <h1 class="text-2xl sm:text-2xl lg:text-4xl font-extrabold ">{{nom}}</h1>
 </section>
 
 
@@ -161,7 +161,9 @@ class="fixed bottom-[5vh] right-7 md:hidden">
       }
     }
     @media (min-width: 840px) {
-    
+      .section, .section_grid {
+        max-width: clamp(0px, 80vw, 1200px);
+      }
     }
 
 
