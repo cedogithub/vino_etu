@@ -54,7 +54,7 @@ class BouteilleModel extends Modele {
 	{
 		$this->database->query('INSERT INTO bouteille_du_cellier ', [ 
 			'bdc_bout_id' => $data['bdc_bout_id'],
-			'bdc_date_achat' => empty($data['bdc_date_achat']) ? $this->database->literal('NOW()') :  '',
+			'bdc_date_achat' => empty($data['bdc_date_achat']) ? $this->database->literal('NOW()') : $data['bdc_date_achat'],
 			'bdc_garde_jusqua' => $data['bdc_garde_jusqua'],
 			'bdc_notes' => $data['bdc_notes'],
 			'bdc_quantite' => $data['bdc_quantite'],
@@ -75,7 +75,7 @@ class BouteilleModel extends Modele {
 	public function modifierBouteille($data)
 	{
 		$this->database->query('UPDATE bouteille_du_cellier SET', [
-			'bdc_date_achat' => $data['bdc_date_achat'],
+			'bdc_date_achat' => empty($data['bdc_date_achat']) ? $this->database->literal('NOW()') : $data['bdc_date_achat'],
 			'bdc_garde_jusqua' => $data['bdc_garde_jusqua'],
 			'bdc_notes' => $data['bdc_notes'],
 			'bdc_quantite' => $data['bdc_quantite'],
