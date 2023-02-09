@@ -31,7 +31,10 @@
 
     </div>
       
-    <!-- Recherche -->
+    
+    
+    <div class="flex justify-center items-center gap-14 relative">
+      <!-- Recherche -->
      <form method="POST" action="/bouteille/recherche">   
       <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
       <div class="relative">
@@ -42,8 +45,6 @@
       </div>
     </form> 
   
-    
-    <div class="flex justify-center items-center gap-14 relative">
       <div x-data="{open : false}" class="flex flex-col  space-y-1 ">
           <div class="">
               <p @click="open = true"  class="flex items-center">
