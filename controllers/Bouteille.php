@@ -13,24 +13,26 @@ class Bouteille
             exit();
         }
     }
-
-    /*
-    * Recherche
-    *
-    *
-    */
+    
+    /**
+     * Fonction qui permet la recherche en utilisant le filter
+     *
+     * @return void
+     */
     public function recherche()
     {
-        $recherche = $_POST['recherche'];
         $model = new BouteilleModel();
-        $dataBrut = $model->rechercheNom($recherche);
+        $dataBrut = $model->recherche();
 
         $resultat = array_filter($dataBrut, function($el) {
-            if ( str_contains($el['bout_nom'], $_POST['recherche'])
-                ||  str_contains($el['bdc_quantite'], $_POST['recherche'])
-                ||  str_contains($el['bdc_millesime'], $_POST['recherche'])
-                ||  str_contains($el['bout_pays'], $_POST['recherche'])
-                ||  str_contains($el['bout_description'], $_POST['recherche'])
+
+            $recherche = strtolower(trim($_POST['recherche']));
+
+            if ( str_contains(strtolower($el['bout_nom']), $recherche)
+                ||  str_contains(strtolower($el['bdc_quantite']), $recherche)
+                ||  str_contains(strtolower($el['bdc_millesime']), $recherche)
+                ||  str_contains(strtolower($el['bout_pays']), $recherche)
+                ||  str_contains(strtolower($el['bout_description']), $recherche)
             ) {
                 return  $el;
             }
@@ -38,12 +40,12 @@ class Bouteille
         });
 
 
-        echo "<pre>";
-        print_r($resultat);
-        echo "</pre>";
+        // echo "<pre>";
+        //  print_r($resultat);
+        //  echo "</pre>";
 
         $this->render('bouteille/recherche.html', [
-            // 'bouteilles' => $resultat
+             'bouteilles' => $resultat
         ]);
 
     }
