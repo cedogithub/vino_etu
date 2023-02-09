@@ -56,7 +56,8 @@ class Bouteille
 
         $this->render('bouteille/nouveau.html',[
             'bouteillesSAQ' => $bouteillesSAQ,
-            'listeCellier' => $listeCellier 
+            'listeCellier' => $listeCellier,
+            'id_cellier' => $_GET['id_cellier'] ?? 'aucun'
         ]);
     }
 
