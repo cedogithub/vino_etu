@@ -1,11 +1,30 @@
 <?php
  class Cellier {
 
+    /**
+     * Route s'assurant que l'usager soit authentifié
+     *
+     * @return void
+     */
+    public function protection()
+    {
+        if (!isset($_SESSION['utilisateur'])) {
+            header('location: /utilisateur/accueil');
+            exit();
+        } 
+    } 
+    
+    /**
+     * Contrôle l'affichage de tous les celliers de l'utilisateur
+     *
+     * @return void
+     */
     public function toutCellier() {
         $model = new CellierModel();
 
         $this->render('cellier/cellier.html', [
-            'celliers' => $model->getAllCelliers($_SESSION['uti_id'])
+            'celliers' => $model->getAllCelliers($_SESSION['uti_id']),
+            'message' => $_GET['message'] ?? 'ouii'
         ]);
     }
     
@@ -22,6 +41,7 @@
         $nom = (new CellierModel())->getNomCellier($cel_id);       
         $this->render('cellier/un.html', [
             'nom' => $nom['cel_nom'],
+            'cel_id' => $cel_id,
             'bouteilles' => $bouteilles,
             'message' => $_GET['message'] ?? 'ouii'
         ]); 
@@ -63,23 +83,11 @@
     public function modif(){
         $model = new CellierModel();
 
-        $model -> modifierCellier($_POST['cel_if'], $_POST['cel_nom']);
+        $model -> modifierCellier($_POST['cel_id'], $_POST['cel_nom']);
 
         header("Location: /cellier/cellier?message=modifier");
     }
     
-    /**
-     * Route s'assurant que l'usager soit authentifié
-     *
-     * @return void
-     */
-    public function protection()
-    {
-        if (!isset($_SESSION['utilisateur'])) {
-            header('location: /utilisateur/accueil');
-            exit();
-        } 
-    } 
 
     /**
      * Affiche la page demandée
