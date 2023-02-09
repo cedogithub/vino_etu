@@ -134,10 +134,9 @@ class BouteilleModel extends Modele {
 	/**
 	 * Requete de RECHERCHE dans les CELLIER de USER
 	 *
-	 * @param  mixed $recherche
 	 * @return void
 	 */
-	public function rechercheNom($recherche)
+	public function recherche()
 	{
 		return $this->database->fetchAll(
 			"SELECT 
