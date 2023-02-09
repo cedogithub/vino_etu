@@ -25,9 +25,5 @@ npx tailwindcss -i ./public/css/input.css -o ./public/css/tailwind.css --watch -
 - message quand bouteille et cellier vide
 - ajout d'un BOUTON de RETOUR dans la liste des bouteille d'un cellier
 - ajout du mode STICKY HEADER dans la liste des bouteille d'un cellier [exemple to be sticky and together: top jusqu'a la premiere bouteille de la liste] 
-- bouton: desktop mettre a droite
-- aligenment des boutons sur les pages
-- supprimer marche pas sur hostinger
-- essayer form ajout en pop up
 - nav desktop
-- date d'achat en bas dans le form ,car non obligatoire
+
