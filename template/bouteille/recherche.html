@@ -71,6 +71,18 @@
   {% endfor %}
   
   </section>
+  {% if bouteilles is empty %}
+
+
+<section class="section md:mt-4">
+  <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow 0">
+    <p class="mb-3 font-normal text-gray-700">Aucun résultats n'a été trouvé</p>
+
+</div>
+</section>
+
+</section>
+{% endif %}
 <style>
   .section {
     max-width: clamp(0px, 90vw, 1200px);
