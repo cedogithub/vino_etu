@@ -142,7 +142,8 @@ class BouteilleModel extends Modele {
 		return $this->database->fetchAll(
 			"SELECT 
 				bouteille_du_cellier.*,
-				bouteille_saq.*			
+				bouteille_saq.*	,
+				cellier.*		
 			from cellier
 			INNER JOIN bouteille_du_cellier ON cellier.cel_id = bouteille_du_cellier.bdc_cel_id
 			INNER JOIN bouteille_saq on bouteille_du_cellier.bdc_bout_id = bouteille_saq.bout_id 
